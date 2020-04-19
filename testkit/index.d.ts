@@ -268,6 +268,8 @@ import { VerticalTabsUniDriver } from '../src/VerticalTabs/VerticalTabs.uni.driv
 export const verticalTabsTestkitFactory: VanillaUniTestkitFactory<VerticalTabsUniDriver>;
 import { VerticalTabsItemUniDriver } from '../src/VerticalTabsItem/VerticalTabsItem.uni.driver';
 export const verticalTabsItemTestkitFactory: VanillaUniTestkitFactory<VerticalTabsItemUniDriver>;
+import { TimelineUniDriver } from '../src/Timeline/Timeline.uni.driver';
+export const timelineTestkitFactory: VanillaUniTestkitFactory<TimelineUniDriver>;
 import { HeaderDriver } from '../src/Card/Header/Header.driver';
 export const headerTestkitFactory: VanillaTestkitFactory<HeaderDriver>;
 import { EditableRowDriver } from '../src/EditableSelector/EditableRow/EditableRow.driver';

@@ -157,6 +157,7 @@ export const tooltipTestkitFactory = protractorUniTestkitFactoryCreator(load(req
 export const variableInputTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/VariableInput/VariableInput.uni.driver')));
 export const verticalTabsTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/VerticalTabs/VerticalTabs.uni.driver')));
 export const verticalTabsItemTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/VerticalTabsItem/VerticalTabsItem.uni.driver')));
+export const timelineTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/Timeline/Timeline.uni.driver')));
 export const cardHeaderTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/Card/Header/Header.uni.driver')));
 export const editableRowTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/EditableSelector/EditableRow/EditableRow.uni.driver')));
 export const fieldLabelAttributesTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/FieldLabelAttributes/FieldLabelAttributes.driver')));

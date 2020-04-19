@@ -154,6 +154,7 @@ export const tooltipTestkitFactory = enzymeUniTestkitFactoryCreator(load(require
 export const variableInputTestkitFactory = enzymeUniTestkitFactoryCreator(load(require('../src/VariableInput/VariableInput.uni.driver')));
 export const verticalTabsTestkitFactory = enzymeUniTestkitFactoryCreator(load(require('../src/VerticalTabs/VerticalTabs.uni.driver')));
 export const verticalTabsItemTestkitFactory = enzymeUniTestkitFactoryCreator(load(require('../src/VerticalTabsItem/VerticalTabsItem.uni.driver')));
+export const timelineTestkitFactory = enzymeUniTestkitFactoryCreator(load(require('../src/Timeline/Timeline.uni.driver')));
 export const headerTestkitFactory = enzymeTestkitFactoryCreator(load(require('../src/Card/Header/Header.driver')));
 export const draggableTestkitFactory = enzymeTestkitFactoryCreator(load(require('../src/DragAndDrop/Draggable/Draggable.driver')));
 export const editableRowTestkitFactory = enzymeTestkitFactoryCreator(load(require('../src/EditableSelector/EditableRow/EditableRow.driver')));

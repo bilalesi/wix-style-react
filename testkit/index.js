@@ -154,6 +154,7 @@ export const tooltipTestkitFactory = uniTestkitFactoryCreator(load(require('../s
 export const variableInputTestkitFactory = uniTestkitFactoryCreator(load(require('../src/VariableInput/VariableInput.uni.driver')));
 export const verticalTabsTestkitFactory = uniTestkitFactoryCreator(load(require('../src/VerticalTabs/VerticalTabs.uni.driver')));
 export const verticalTabsItemTestkitFactory = uniTestkitFactoryCreator(load(require('../src/VerticalTabsItem/VerticalTabsItem.uni.driver')));
+export const timelineTestkitFactory = uniTestkitFactoryCreator(load(require('../src/Timeline/Timeline.uni.driver')));
 export const headerTestkitFactory = testkitFactoryCreator(load(require('../src/Card/Header/Header.driver')));
 export const draggableTestkitFactory = testkitFactoryCreator(load(require('../src/DragAndDrop/Draggable/Draggable.driver')));
 export const editableRowTestkitFactory = testkitFactoryCreator(load(require('../src/EditableSelector/EditableRow/EditableRow.driver')));

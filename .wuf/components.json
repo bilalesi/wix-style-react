@@ -424,5 +424,8 @@
   },
   "VerticalTabsItem": {
     "path": "src/VerticalTabsItem"
+  },
+  "Timeline": {
+    "path": "src/Timeline"
   }
 }

@@ -145,6 +145,7 @@ export const tooltipTestkitFactory = puppeteerUniTestkitFactoryCreator(load(requ
 export const variableInputTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/VariableInput/VariableInput.uni.driver')));
 export const verticalTabsTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/VerticalTabs/VerticalTabs.uni.driver')));
 export const verticalTabsItemTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/VerticalTabsItem/VerticalTabsItem.uni.driver')));
+export const timelineTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/Timeline/Timeline.uni.driver')));
 export const cardHeaderTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/Card/Header/Header.uni.driver')));
 export const editableRowTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/EditableSelector/EditableRow/EditableRow.uni.driver')));
 export const messageBoxMarketerialLayoutTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/MessageBox/MarketerialLayout/MessageBoxMarketerialLayout.uni.driver')));

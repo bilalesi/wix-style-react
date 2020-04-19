@@ -269,6 +269,8 @@ import {VerticalTabsUniDriver} from '../src/VerticalTabs/VerticalTabs.uni.driver
 export const verticalTabsTestkitFactory: EnzymeUniTestkitFactory<VerticalTabsUniDriver>;
 import {VerticalTabsItemUniDriver} from '../src/VerticalTabsItem/VerticalTabsItem.uni.driver';
 export const verticalTabsItemTestkitFactory: EnzymeUniTestkitFactory<VerticalTabsItemUniDriver>;
+import {TimelineUniDriver} from '../src/Timeline/Timeline.uni.driver';
+export const timelineTestkitFactory: EnzymeUniTestkitFactory<TimelineUniDriver>;
 import {HeaderDriver} from '../src/Card/Header/Header.driver';
 export const headerTestkitFactory: EnzymeTestkitFactory<HeaderDriver>;
 import {EditableRowDriver} from '../src/EditableSelector/EditableRow/EditableRow.driver';

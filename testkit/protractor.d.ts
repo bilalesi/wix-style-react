@@ -125,6 +125,7 @@ export const tooltipTestkitFactory: any;
 export const variableInputTestkitFactory: any;
 export const verticalTabsTestkitFactory: any;
 export const verticalTabsItemTestkitFactory: any;
+export const timelineTestkitFactory: any;
 export const cardHeaderTestkitFactory: any;
 export const editableRowTestkitFactory: any;
 export const fieldLabelAttributesTestkitFactory: any;

@@ -249,6 +249,8 @@ import {VerticalTabsUniDriver} from '../src/VerticalTabs/VerticalTabs.uni.driver
 export const verticalTabsTestkitFactory: PuppeteerUniTestkitFactory<VerticalTabsUniDriver>;
 import {VerticalTabsItemUniDriver} from '../src/VerticalTabsItem/VerticalTabsItem.uni.driver';
 export const verticalTabsItemTestkitFactory: PuppeteerUniTestkitFactory<VerticalTabsItemUniDriver>;
+import {TimelineUniDriver} from '../src/Timeline/Timeline.uni.driver';
+export const timelineTestkitFactory: PuppeteerUniTestkitFactory<TimelineUniDriver>;
 import {HeaderUniDriver} from '../src/Card/Header/Header.uni.driver';
 export const cardHeaderTestkitFactory: PuppeteerUniTestkitFactory<HeaderUniDriver>;
 import {EditableRowUniDriver} from '../src/EditableSelector/EditableRow/EditableRow.uni.driver';
