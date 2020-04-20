@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: G30,R30;
+  -st-named: G30,R30,D30,D80;
 }
 
 .root {
@@ -19,4 +19,36 @@
 .button {
   display: flex;
   justify-content: space-evenly;
+}
+
+.timeline {
+  display: block;
+  border-left: 3px solid value(D30);
+  position: relative;
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  background-color: value(D80);
+}
+
+.timeline .event {
+  display: list-item;
+  position: relative;
+  padding-left: 15px;
+}
+
+.timeline .event:after {
+  position: absolute;
+  display: block;
+}
+.timeline .event:after {
+  box-shadow: 0 0 0 5px value(D80);
+  left: -5px;
+  background: value(D30);
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  content: "";
+  top: 4.5px;
 }
