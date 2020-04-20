@@ -18,7 +18,7 @@ class Timeline extends React.PureComponent {
           {item.prefix ? (
             <div className={styles.prefixCustom}>{item.prefix}</div>
           ) : (
-            <div className={styles.prefixDefault}></div>
+            <div className={styles.prefixDefault} />
           )}
         </div>
         <div className={styles.label}>
