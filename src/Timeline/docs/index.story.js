@@ -14,6 +14,9 @@ import {
   testkit,
 } from 'wix-storybook-utils/Sections';
 
+import TextButton from '../../TextButton';
+import Time from 'wix-ui-icons-common/Time';
+
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 
@@ -30,7 +33,7 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    buttonText: 'Hello World!',
+    items: [],
   },
 
   exampleProps: {
@@ -41,7 +44,30 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${Timeline.displayName}/`,
-      component: <Timeline buttonText="Click me!" />,
+      component: (
+        <Timeline
+          items={[
+            {
+              label: 'Quote #8 Accepted: Website setup, $7.00',
+              suffix: 'Jan 1, 2019 12:03 AM',
+              labelAction: (
+                <TextButton weight="normal" size="small">
+                  View Order
+                </TextButton>
+              ),
+            },
+            {
+              label: 'Quote #8 Accepted: Website setup, $7.00',
+              suffix: 'Jan 1, 2019 12:03 AM',
+              labelAction: (
+                <TextButton weight="normal" size="small">
+                  View Order
+                </TextButton>
+              ),
+            },
+          ]}
+        />
+      ),
     }),
 
     tabs([
@@ -63,13 +89,31 @@ export default {
           example({
             title: 'Simple Usage',
             text: 'A simple example with compact preview',
-            source: '<Timeline buttonText="Hello World!"/>',
+            source:
+              '<Timeline items={[{' +
+              "    label: 'Quote #8 Accepted: Website setup, $7.00',\n" +
+              "    suffix: 'Jan 1, 2019 12:03 AM',\n" +
+              '    labelAction: (\n' +
+              '      <TextButton weight="normal" size="small">\n' +
+              '        View Order\n' +
+              '      </TextButton>\n' +
+              '    ),\n' +
+              '  },\n' +
+              '  {\n' +
+              "    label: 'Quote #8 Accepted: Website setup, $7.00',\n" +
+              "    suffix: 'Jan 1, 2019 12:03 AM',\n" +
+              '    labelAction: (\n' +
+              '      <TextButton weight="normal" size="small">\n' +
+              '        View Order\n' +
+              '      </TextButton>\n' +
+              '    ),\n' +
+              '  }]}/>',
           }),
 
           code({
             title: 'Full Interactive Preview',
             description: 'A non compact version of same code example as above',
-            source: '<Timeline buttonText="Hello World!"/>',
+            source: '<Timeline items={[]}/>',
           }),
         ],
       }),
@@ -82,3 +126,53 @@ export default {
     ]),
   ],
 };
+
+// [
+// //   {
+// //     label: 'Quote #8 Accepted: Website setup, $7.00',
+// //     suffix: 'Jan 1, 2019 12:03 AM',
+// //     labelAction: (
+// //       <TextButton weight="normal" size="small">
+// //         View Order
+// //       </TextButton>
+// //     ),
+// //   },
+// //   {
+// //     label:
+// //       'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+// //     suffix: 'Jan 1, 2019 12:03 AM',
+// //     labelAction: (
+// //       <TextButton weight="normal" size="small">
+// //         View Order
+// //       </TextButton>
+// //     ),
+// //     prefix: <Time />,
+// //   },
+// //   {
+// //     label: 'Quote #8 Accepted: Website setup, $7.00',
+// //     labelAction: (
+// //       <TextButton weight="normal" size="small">
+// //         View Order
+// //       </TextButton>
+// //     ),
+// //   },
+// //   {
+// //     label:
+// //       'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+// //     suffix: 'Jan 1, 2019 12:03 AM',
+// //   },
+// //   {
+// //     label:
+// //       'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+// //   },
+// //   {
+// //     label:
+// //       'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+// //     suffix: 'Jan 1, 2019 12:03 AM',
+// //     labelAction: (
+// //       <TextButton weight="normal" size="small">
+// //         View Order
+// //       </TextButton>
+// //     ),
+// //   },
+// // ]

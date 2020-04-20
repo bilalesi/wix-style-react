@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import TextButton from '../TextButton';
-import Time from 'wix-ui-icons-common/Time';
 import styles from './Timeline.st.css';
 import { dataHooks } from './constants';
 
@@ -11,7 +9,7 @@ import { dataHooks } from './constants';
 class Timeline extends React.PureComponent {
   state = {};
 
-  getListItem(item) {
+  _getListItem(item) {
     return (
       <div className={styles.event}>
         <div className={styles.prefix}>
@@ -38,56 +36,7 @@ class Timeline extends React.PureComponent {
   }
 
   render() {
-    const { dataHook, className } = this.props;
-    const timelineItems = [
-      {
-        label: 'Quote #8 Accepted: Website setup, $7.00',
-        suffix: 'Jan 1, 2019 12:03 AM',
-        labelAction: (
-          <TextButton weight="normal" size="small">
-            View Order
-          </TextButton>
-        ),
-      },
-      {
-        label:
-          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
-        suffix: 'Jan 1, 2019 12:03 AM',
-        labelAction: (
-          <TextButton weight="normal" size="small">
-            View Order
-          </TextButton>
-        ),
-        prefix: <Time />,
-      },
-      {
-        label: 'Quote #8 Accepted: Website setup, $7.00',
-        labelAction: (
-          <TextButton weight="normal" size="small">
-            View Order
-          </TextButton>
-        ),
-      },
-      {
-        label:
-          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
-        suffix: 'Jan 1, 2019 12:03 AM',
-      },
-      {
-        label:
-          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
-      },
-      {
-        label:
-          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
-        suffix: 'Jan 1, 2019 12:03 AM',
-        labelAction: (
-          <TextButton weight="normal" size="small">
-            View Order
-          </TextButton>
-        ),
-      },
-    ];
+    const { dataHook, className, items } = this.props;
 
     return (
       <div
@@ -96,7 +45,7 @@ class Timeline extends React.PureComponent {
         data-hook={dataHook}
       >
         <div className={styles.timeline}>
-          {timelineItems.map(item => this.getListItem(item))}
+          {items.map(item => this._getListItem(item))}
         </div>
       </div>
     );
