@@ -5,16 +5,38 @@ export const timelineDriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Get the current count */
-    getCountText: async () =>
-      base.$(`[data-hook="${dataHooks.timelineCount}"]`).text(),
+    /** Is the timeline exists */
+    isTimelineExists: () =>
+      base.$(`[data-hook="${dataHooks.timelineList}"]`).exists(),
 
-    /** Click the button */
-    clickButton: async () =>
-      base.$(`[data-hook="${dataHooks.timelineButton}"]`).click(),
+    /** Get the label text by item id */
+    getLabelText: async itemsId =>
+      await base
+        .$(`[data-hook="${dataHooks.timelineLabel}-${itemsId}"]`)
+        .text(),
 
-    /** Get the button's text */
-    getButtonText: async () =>
-      base.$(`[data-hook="${dataHooks.timelineButton}"]`).text(),
+    /** Get the suffix text by item id */
+    getSuffixText: async itemsId =>
+      await base
+        .$(`[data-hook="${dataHooks.timelineTextSuffix}-${itemsId}"]`)
+        .text(),
+
+    /** Is custom suffix wrapper by item id */
+    isCustomSuffixExists: itemsId =>
+      base
+        .$(`[data-hook="${dataHooks.timelineCustomSuffix}-${itemsId}"]`)
+        .exists(),
+
+    /** Is default prefix wrapper by item id */
+    isDefaultPrefixExists: itemsId =>
+      base
+        .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${itemsId}"]`)
+        .exists(),
+
+    /** Is custom prefix wrapper by item id */
+    isCustomPrefixExists: itemsId =>
+      base
+        .$(`[data-hook="${dataHooks.timelineCustomPrefix}-${itemsId}"]`)
+        .exists(),
   };
 };

@@ -9,9 +9,15 @@ import { dataHooks } from './constants';
 class Timeline extends React.PureComponent {
   state = {};
 
+  _isString = a => typeof a === 'string';
+
   _getListItem(item) {
     return (
-      <div className={styles.event}>
+      <div
+        className={styles.event}
+        data-hook={`${dataHooks.timelineListEvent}-${item.id}`}
+        key={`${dataHooks.timelineListEvent}-${item.id}`}
+      >
         <div className={styles.prefix}>
           {item.prefix ? (
             <div className={styles.prefixCustom}>{item.prefix}</div>
@@ -20,16 +26,29 @@ class Timeline extends React.PureComponent {
           )}
         </div>
         <div className={styles.label}>
-          <Text weight="normal" size="small">
+          <Text
+            dataHook={`${dataHooks.timelineLabel}-${item.id}`}
+            weight="normal"
+            size="small"
+          >
             {item.label}
           </Text>
           <span> </span>
           {item.labelAction}
         </div>
         <div className={styles.suffix}>
-          <Text skin="disabled" weight="normal" size="small">
-            {item.suffix}
-          </Text>
+          {item.suffix && this._isString(item.suffix) ? (
+            <Text
+              dataHook={`${dataHooks.timelineTextSuffix}-${item.id}`}
+              skin="disabled"
+              weight="normal"
+              size="small"
+            >
+              {item.suffix}
+            </Text>
+          ) : (
+            item.suffix || null
+          )}
         </div>
       </div>
     );
@@ -44,7 +63,7 @@ class Timeline extends React.PureComponent {
         {...styles('root', {}, this.props)}
         data-hook={dataHook}
       >
-        <div className={styles.timeline}>
+        <div className={styles.timeline} data-hook={dataHooks.timelineList}>
           {items.map(item => this._getListItem(item))}
         </div>
       </div>

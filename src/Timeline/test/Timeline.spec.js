@@ -12,26 +12,23 @@ describe(Timeline.displayName, () => {
   });
 
   it('should render', async () => {
-    const { driver } = render(<Timeline />);
+    const { driver } = render(<Timeline items={[]} />);
 
-    expect(await driver.exists()).toBe(true);
-    expect(await driver.getButtonText()).toEqual('Click me!');
+    expect(await driver.isTimelineExists()).toBe(true);
   });
 
-  it('should increment', async () => {
-    const { driver } = render(<Timeline />);
+  it('should render timeline basic item', async () => {
+    const items = [
+      {
+        id: 'item-id-1',
+        label: 'timeline item number 1',
+        suffix: 'suffix text',
+      },
+    ];
 
-    await driver.clickButton();
-    await driver.clickButton();
+    const { driver } = render(<Timeline items={items} />);
 
-    expect(await driver.getCountText()).toEqual(
-      'You clicked this button even number (2) of times',
-    );
-  });
-
-  it('should allow changing the button text', async () => {
-    const { driver } = render(<Timeline buttonText="Press me" />);
-
-    expect(await driver.getButtonText()).toEqual('Press me');
+    expect(await driver.getLabelText(items[0].id)).toEqual(items[0].label);
+    expect(await driver.getSuffixText(items[0].id)).toEqual(items[0].suffix);
   });
 });
