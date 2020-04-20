@@ -9,6 +9,7 @@ export interface TimelineItem {
 }
 
 export interface TimelineProps {
+  className?: string;
   dataHook?: string;
   items: TimelineItem[];
 }

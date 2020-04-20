@@ -38,7 +38,7 @@ class Timeline extends React.PureComponent {
   }
 
   render() {
-    const { dataHook } = this.props;
+    const { dataHook, className } = this.props;
     const timelineItems = [
       {
         label: 'Quote #8 Accepted: Website setup, $7.00',
@@ -90,7 +90,11 @@ class Timeline extends React.PureComponent {
     ];
 
     return (
-      <div {...styles('root', {}, this.props)} data-hook={dataHook}>
+      <div
+        className={className}
+        {...styles('root', {}, this.props)}
+        data-hook={dataHook}
+      >
         <div className={styles.timeline}>
           {timelineItems.map(item => this.getListItem(item))}
         </div>
