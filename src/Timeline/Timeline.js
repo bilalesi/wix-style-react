@@ -2,76 +2,87 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import Button from '../Button';
 import TextButton from '../TextButton';
 import styles from './Timeline.st.css';
 import { dataHooks } from './constants';
 
 /** A timeline is a display of a list of events */
 class Timeline extends React.PureComponent {
-  state = {
-    count: 0,
-  };
+  state = {};
 
-  _handleClick = () => {
-    this.setState(({ count }) => ({
-      count: count + 1,
-    }));
-  };
+  getItemNode(item) {
+    return (
+      <div className={styles.event}>
+        <div className={styles.label}>
+          <Text weight="normal" size="small">
+            {item.label}
+          </Text>
+          <div className={styles.labelAction}>{item.labelAction}</div>
+        </div>
+        <div className={styles.suffix}>
+          <Text skin="disabled" weight="normal" size="small">
+            {item.suffix}
+          </Text>
+        </div>
+      </div>
+    );
+  }
 
   render() {
-    const { count } = this.state;
-    const { dataHook, buttonText } = this.props;
-    const isEven = count % 2 === 0;
+    const { dataHook } = this.props;
+    const timelineItems = [
+      {
+        label: 'Quote #8 Accepted: Website setup, $7.00',
+        suffix: 'Jan 1, 2019 12:03 AM',
+        labelAction: (
+          <TextButton weight="normal" size="small">
+            View Order
+          </TextButton>
+        ),
+      },
+      {
+        label:
+          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+        suffix: 'Jan 1, 2019 12:03 AM',
+        labelAction: (
+          <TextButton weight="normal" size="small">
+            View Order
+          </TextButton>
+        ),
+      },
+      {
+        label: 'Quote #8 Accepted: Website setup, $7.00',
+        labelAction: (
+          <TextButton weight="normal" size="small">
+            View Order
+          </TextButton>
+        ),
+      },
+      {
+        label:
+          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+        suffix: 'Jan 1, 2019 12:03 AM',
+      },
+      {
+        label:
+          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+      },
+      {
+        label:
+          'New Order: 1 item, $4.99 this will be a longer text that will be two lines or a very very long text for a vertical that needs a lot of text that will be three lines',
+        suffix: 'Jan 1, 2019 12:03 AM',
+        labelAction: (
+          <TextButton weight="normal" size="small">
+            View Order
+          </TextButton>
+        ),
+      },
+    ];
 
     return (
-      <div
-        {...styles('root', { even: isEven, odd: !isEven }, this.props)}
-        data-hook={dataHook}
-      >
-        <Text dataHook={dataHooks.timelineCount}>
-          You clicked this button {isEven ? 'even' : 'odd'} number (
-          <span className={styles.number}>{count}</span>) of times
-        </Text>
-
-        <div className={styles.button}>
-          <Button
-            onClick={this._handleClick}
-            dataHook={dataHooks.timelineButton}
-          >
-            {buttonText}
-          </Button>
-        </div>
-
+      <div {...styles('root', {}, this.props)} data-hook={dataHook}>
         <div className={styles.timeline}>
-          <div className={styles.event}>
-            <Text>Quote #8 Accepted: Website setup, $7.00</Text>
-            <TextButton>View Quote</TextButton>
-            <Text>Jan 1, 2019 12:03 AM</Text>
-          </div>
-          <div className={styles.event}>
-            <Text>
-              New Order: 1 item, $4.99 this will be a longer text that will be
-              two lines or a very very long text for a vertical that needs a lot
-              of text that will be three lines
-            </Text>
-            <TextButton>View Order</TextButton>
-            <Text>Jan 1, 2019 12:03 AM</Text>
-          </div>
-          <div className={styles.event}>
-            <Text>Quote #8 Accepted: Website setup, $7.00</Text>
-            <TextButton>View Quote</TextButton>
-            <Text>Jan 1, 2019 12:03 AM</Text>
-          </div>
-          <div className={styles.event}>
-            <Text>
-              New Order: 1 item, $4.99 this will be a longer text that will be
-              two lines or a very very long text for a vertical that needs a lot
-              of text that will be three lines
-            </Text>
-            <TextButton>View Order</TextButton>
-            <Text>Jan 1, 2019 12:03 AM</Text>
-          </div>
+          {timelineItems.map(item => this.getItemNode(item))}
         </div>
       </div>
     );

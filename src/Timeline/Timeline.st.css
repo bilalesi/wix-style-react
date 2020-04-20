@@ -7,7 +7,9 @@
   -st-states: odd, even;
   text-align: center;
   background-color: value(D80);
-  padding-left: 10px;
+  padding-left: 23px;
+  padding-right: 30px;
+  padding-top: 28px;
 }
 
 .root:even .number {
@@ -36,8 +38,25 @@
 .timeline .event {
   display: list-item;
   position: relative;
-  padding-left: 15px;
-  padding-bottom: 35px;
+  padding-left: 18px;
+  padding-bottom: 30px;
+}
+
+.timeline .event .label{
+  width: 70%;
+  display: inline-block;
+}
+.timeline .event .labelAction{
+  padding-left: 6px;
+  display: inline-block;
+}
+
+.timeline .event .suffix{
+  width: 30%;
+  display: inline-block;
+  text-align: right;
+  vertical-align: top;
+  padding-top: 3px;
 }
 
 .timeline .event:after {
