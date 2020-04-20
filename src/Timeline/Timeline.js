@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Text from '../Text';
 import TextButton from '../TextButton';
+import Add from 'wix-ui-icons-common/Add';
 import styles from './Timeline.st.css';
 import { dataHooks } from './constants';
 
@@ -13,6 +14,13 @@ class Timeline extends React.PureComponent {
   getItemNode(item) {
     return (
       <div className={styles.event}>
+        <div className={styles.prefix}>
+          {item.prefix ? (
+            item.prefix
+          ) : (
+            <div className={styles.prefixDefault}></div>
+          )}
+        </div>
         <div className={styles.label}>
           <Text weight="normal" size="small">
             {item.label}
@@ -50,6 +58,7 @@ class Timeline extends React.PureComponent {
             View Order
           </TextButton>
         ),
+        prefix: <Add />,
       },
       {
         label: 'Quote #8 Accepted: Website setup, $7.00',

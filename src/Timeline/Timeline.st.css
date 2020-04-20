@@ -27,7 +27,6 @@
 
 .timeline {
   display: block;
-  border-left: 3px solid value(D30);
   position: relative;
   list-style: none;
   text-align: left;
@@ -38,12 +37,34 @@
 .timeline .event {
   display: list-item;
   position: relative;
-  padding-left: 18px;
   padding-bottom: 30px;
+  border-left: 1px solid value(D30);
+}
+
+.timeline .event:last-child {
+  border-left: none;
+}
+
+.timeline .event .prefix{
+  width: 5%;
+  display: inline-block;
+}
+
+.timeline .event .prefix .prefixDefault{
+  position: absolute;
+  display: block;
+  background: value(D30);
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  content: "";
+  top: 4.5px;
+  box-shadow: 0 0 0 5px value(D80);
+  left: -4px;
 }
 
 .timeline .event .label{
-  width: 70%;
+  width: 65%;
   display: inline-block;
 }
 
@@ -53,19 +74,4 @@
   text-align: right;
   vertical-align: top;
   padding-top: 3px;
-}
-
-.timeline .event:after {
-  position: absolute;
-  display: block;
-}
-.timeline .event:after {
-  box-shadow: 0 0 0 5px value(D80);
-  left: -5px;
-  background: value(D30);
-  border-radius: 50%;
-  height: 7px;
-  width: 7px;
-  content: "";
-  top: 4.5px;
 }
