@@ -112,8 +112,16 @@ Timeline.propTypes = {
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
 
-  /** Text for the button */
-  buttonText: PropTypes.string,
+  /** timeline events items */
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      label: PropTypes.string,
+      labelAction: PropTypes.node,
+      customPrefix: PropTypes.node,
+      suffix: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    }),
+  ).isRequired,
 };
 
 Timeline.defaultProps = {};

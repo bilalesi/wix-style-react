@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface TimelineItem {
-  id: string;
+  id: string | number;
   label: string;
   labelAction?: React.ReactNode;
   customPrefix?: React.ReactNode;
