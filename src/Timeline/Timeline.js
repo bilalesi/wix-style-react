@@ -17,7 +17,8 @@ class Timeline extends React.PureComponent {
           <Text weight="normal" size="small">
             {item.label}
           </Text>
-          <div className={styles.labelAction}>{item.labelAction}</div>
+          <span> </span>
+          {item.labelAction}
         </div>
         <div className={styles.suffix}>
           <Text skin="disabled" weight="normal" size="small">
