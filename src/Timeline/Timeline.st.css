@@ -6,6 +6,8 @@
 .root {
   -st-states: odd, even;
   text-align: center;
+  background-color: value(D80);
+  padding-left: 10px;
 }
 
 .root:even .number {
@@ -29,13 +31,13 @@
   text-align: left;
   padding: 0;
   margin: 0;
-  background-color: value(D80);
 }
 
 .timeline .event {
   display: list-item;
   position: relative;
   padding-left: 15px;
+  padding-bottom: 35px;
 }
 
 .timeline .event:after {

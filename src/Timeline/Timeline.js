@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Text from '../Text';
 import Button from '../Button';
+import TextButton from '../TextButton';
 import styles from './Timeline.st.css';
 import { dataHooks } from './constants';
 
@@ -40,6 +41,37 @@ class Timeline extends React.PureComponent {
           >
             {buttonText}
           </Button>
+        </div>
+
+        <div className={styles.timeline}>
+          <div className={styles.event}>
+            <Text>Quote #8 Accepted: Website setup, $7.00</Text>
+            <TextButton>View Quote</TextButton>
+            <Text>Jan 1, 2019 12:03 AM</Text>
+          </div>
+          <div className={styles.event}>
+            <Text>
+              New Order: 1 item, $4.99 this will be a longer text that will be
+              two lines or a very very long text for a vertical that needs a lot
+              of text that will be three lines
+            </Text>
+            <TextButton>View Order</TextButton>
+            <Text>Jan 1, 2019 12:03 AM</Text>
+          </div>
+          <div className={styles.event}>
+            <Text>Quote #8 Accepted: Website setup, $7.00</Text>
+            <TextButton>View Quote</TextButton>
+            <Text>Jan 1, 2019 12:03 AM</Text>
+          </div>
+          <div className={styles.event}>
+            <Text>
+              New Order: 1 item, $4.99 this will be a longer text that will be
+              two lines or a very very long text for a vertical that needs a lot
+              of text that will be three lines
+            </Text>
+            <TextButton>View Order</TextButton>
+            <Text>Jan 1, 2019 12:03 AM</Text>
+          </div>
         </div>
       </div>
     );
