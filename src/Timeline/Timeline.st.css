@@ -46,7 +46,7 @@
 }
 
 .timeline .event .prefix{
-  width: 5%;
+  width: 3%;
   display: inline-block;
 }
 
@@ -63,8 +63,19 @@
   left: -4px;
 }
 
+.timeline .event .prefix .prefixCustom:first-child{
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  content: "";
+  top:-1px;
+  box-shadow: 0 0 0 1px value(D80);
+  background-color: value(D80);
+  left: -12px;
+}
+
 .timeline .event .label{
-  width: 65%;
+  width: 67%;
   display: inline-block;
 }
 
