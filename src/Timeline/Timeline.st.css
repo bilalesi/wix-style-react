@@ -1,28 +1,14 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: G30,R30,D30,D80;
+  -st-named: D30,D80;
 }
 
 .root {
-  -st-states: odd, even;
   text-align: center;
   background-color: value(D80);
   padding-left: 23px;
   padding-right: 30px;
   padding-top: 28px;
-}
-
-.root:even .number {
-  background: value(G30);
-}
-
-.root:odd .number {
-  background: value(R30);
-}
-
-.button {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .timeline {

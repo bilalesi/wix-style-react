@@ -11,7 +11,7 @@ import { dataHooks } from './constants';
 class Timeline extends React.PureComponent {
   state = {};
 
-  getItemNode(item) {
+  getListItem(item) {
     return (
       <div className={styles.event}>
         <div className={styles.prefix}>
@@ -92,7 +92,7 @@ class Timeline extends React.PureComponent {
     return (
       <div {...styles('root', {}, this.props)} data-hook={dataHook}>
         <div className={styles.timeline}>
-          {timelineItems.map(item => this.getItemNode(item))}
+          {timelineItems.map(item => this.getListItem(item))}
         </div>
       </div>
     );
