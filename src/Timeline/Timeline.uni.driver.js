@@ -25,20 +25,18 @@ export const timelineDriverFactory = (base, body) => {
     getCustomSuffixElement: itemsId =>
       base.$(`[data-hook="${dataHooks.timelineSuffix}-${itemsId}"]`),
 
-    /** custom suffix wrapper by item id */
+    /** label action wrapper by item id */
     getLabelActionElement: itemsId =>
       base.$(`[data-hook="${dataHooks.timelineLabelAction}-${itemsId}"]`),
 
     /** Is default prefix wrapper by item id */
-    isDefaultPrefixExists: itemsId =>
-      base
+    isDefaultPrefixExists: async itemsId =>
+      await base
         .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${itemsId}"]`)
         .exists(),
 
-    /** Is custom prefix wrapper by item id */
-    isCustomPrefixExists: itemsId =>
-      base
-        .$(`[data-hook="${dataHooks.timelineCustomPrefix}-${itemsId}"]`)
-        .exists(),
+    /** label action wrapper by item id */
+    getCustomPrefixElement: itemsId =>
+      base.$(`[data-hook="${dataHooks.timelineCustomPrefix}-${itemsId}"]`),
   };
 };

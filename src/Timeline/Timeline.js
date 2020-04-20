@@ -19,10 +19,18 @@ class Timeline extends React.PureComponent {
         key={`${dataHooks.timelineListEvent}-${item.id}`}
       >
         <div className={styles.prefix}>
-          {item.prefix ? (
-            <div className={styles.prefixCustom}>{item.prefix}</div>
+          {item.customPrefix ? (
+            <div
+              data-hook={`${dataHooks.timelineCustomPrefix}-${item.id}`}
+              className={styles.prefixCustom}
+            >
+              {item.customPrefix}
+            </div>
           ) : (
-            <div className={styles.prefixDefault} />
+            <div
+              data-hook={`${dataHooks.timelineDefaultPrefix}-${item.id}`}
+              className={styles.prefixDefault}
+            />
           )}
         </div>
         <div className={styles.label}>
@@ -34,12 +42,14 @@ class Timeline extends React.PureComponent {
             {item.label}
           </Text>
           <span> </span>
-          <div
-            className={styles.labelAction}
-            data-hook={`${dataHooks.timelineLabelAction}-${item.id}`}
-          >
-            {item.labelAction}
-          </div>
+          {item.labelAction ? (
+            <div
+              className={styles.labelAction}
+              data-hook={`${dataHooks.timelineLabelAction}-${item.id}`}
+            >
+              {item.labelAction}
+            </div>
+          ) : null}
         </div>
         {item.suffix ? (
           <div

@@ -26,6 +26,7 @@ describe(Timeline.displayName, () => {
     ];
     const { driver } = render(<Timeline items={items} />);
     expect(await driver.getLabelText(items[0].id)).toEqual(items[0].label);
+    expect(await driver.isDefaultPrefixExists(items[0].id)).toEqual(true);
   });
 
   it('should render timeline with text suffix', async () => {
@@ -40,7 +41,7 @@ describe(Timeline.displayName, () => {
     expect(await driver.getSuffixText(items[0].id)).toEqual(items[0].suffix);
   });
 
-  it('should render timeline with node suffix', async () => {
+  it('should render timeline with suffix element', async () => {
     const items = [
       {
         id: 'item-id-1',
@@ -65,6 +66,20 @@ describe(Timeline.displayName, () => {
     const { driver } = render(<Timeline items={items} />);
     expect(await driver.getLabelActionElement(items[0].id).text()).toEqual(
       'label node',
+    );
+  });
+
+  it('should render timeline with custom prefix element', async () => {
+    const items = [
+      {
+        id: 'item-id-1',
+        label: 'timeline item number 1',
+        customPrefix: <div>custom prefix node</div>,
+      },
+    ];
+    const { driver } = render(<Timeline items={items} />);
+    expect(await driver.getCustomPrefixElement(items[0].id).text()).toEqual(
+      'custom prefix node',
     );
   });
 });
