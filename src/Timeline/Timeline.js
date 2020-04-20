@@ -36,20 +36,25 @@ class Timeline extends React.PureComponent {
           <span> </span>
           {item.labelAction}
         </div>
-        <div className={styles.suffix}>
-          {item.suffix && this._isString(item.suffix) ? (
-            <Text
-              dataHook={`${dataHooks.timelineTextSuffix}-${item.id}`}
-              skin="disabled"
-              weight="normal"
-              size="small"
-            >
-              {item.suffix}
-            </Text>
-          ) : (
-            item.suffix || null
-          )}
-        </div>
+        {item.suffix ? (
+          <div
+            className={styles.suffix}
+            data-hook={`${dataHooks.timelineSuffix}-${item.id}`}
+          >
+            {this._isString(item.suffix) ? (
+              <Text
+                dataHook={`${dataHooks.timelineTextSuffix}-${item.id}`}
+                skin="disabled"
+                weight="normal"
+                size="small"
+              >
+                {item.suffix}
+              </Text>
+            ) : (
+              item.suffix
+            )}
+          </div>
+        ) : null}
       </div>
     );
   }

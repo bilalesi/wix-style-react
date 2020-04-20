@@ -22,10 +22,8 @@ export const timelineDriverFactory = (base, body) => {
         .text(),
 
     /** Is custom suffix wrapper by item id */
-    isCustomSuffixExists: itemsId =>
-      base
-        .$(`[data-hook="${dataHooks.timelineCustomSuffix}-${itemsId}"]`)
-        .exists(),
+    getCustomSuffixElement: itemsId =>
+      base.$(`[data-hook="${dataHooks.timelineSuffix}-${itemsId}"]`),
 
     /** Is default prefix wrapper by item id */
     isDefaultPrefixExists: itemsId =>
