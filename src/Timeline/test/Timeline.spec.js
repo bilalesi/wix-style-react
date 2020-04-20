@@ -53,4 +53,18 @@ describe(Timeline.displayName, () => {
       'suffix node',
     );
   });
+
+  it('should render timeline with label action element', async () => {
+    const items = [
+      {
+        id: 'item-id-1',
+        label: 'timeline item number 1',
+        labelAction: <div>label node</div>,
+      },
+    ];
+    const { driver } = render(<Timeline items={items} />);
+    expect(await driver.getLabelActionElement(items[0].id).text()).toEqual(
+      'label node',
+    );
+  });
 });

@@ -72,3 +72,7 @@
   vertical-align: top;
   padding-top: 3px;
 }
+
+.timeline .event .labelAction{
+  display: inline-block;
+}

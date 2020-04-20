@@ -21,9 +21,13 @@ export const timelineDriverFactory = (base, body) => {
         .$(`[data-hook="${dataHooks.timelineTextSuffix}-${itemsId}"]`)
         .text(),
 
-    /** Is custom suffix wrapper by item id */
+    /** custom suffix wrapper by item id */
     getCustomSuffixElement: itemsId =>
       base.$(`[data-hook="${dataHooks.timelineSuffix}-${itemsId}"]`),
+
+    /** custom suffix wrapper by item id */
+    getLabelActionElement: itemsId =>
+      base.$(`[data-hook="${dataHooks.timelineLabelAction}-${itemsId}"]`),
 
     /** Is default prefix wrapper by item id */
     isDefaultPrefixExists: itemsId =>

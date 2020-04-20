@@ -34,7 +34,12 @@ class Timeline extends React.PureComponent {
             {item.label}
           </Text>
           <span> </span>
-          {item.labelAction}
+          <div
+            className={styles.labelAction}
+            data-hook={`${dataHooks.timelineLabelAction}-${item.id}`}
+          >
+            {item.labelAction}
+          </div>
         </div>
         {item.suffix ? (
           <div
