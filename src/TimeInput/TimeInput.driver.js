@@ -1,4 +1,5 @@
 import { tickerTestkitFactory } from '../Input/Ticker/testkit/Ticker';
+import { boxTestkitFactory } from '../../testkit';
 import ReactTestUtils from 'react-dom/test-utils';
 import styles from './TimeInput.scss';
 import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
@@ -13,6 +14,11 @@ const timeInputDriverFactory = ({ element }) => {
   const inputTicker = () => tickerTestkitFactory({ wrapper: element });
   const amPmIndicator = () =>
     element.querySelector(`[data-hook="${dataHooks.amPmIndicator}"]`);
+  const customSuffixWrapper = () =>
+    boxTestkitFactory({
+      wrapper: element,
+      dataHook: dataHooks.customSuffix,
+    });
   return {
     exists: () => !!element,
     getValue: () => input().getValue(),
@@ -22,6 +28,10 @@ const timeInputDriverFactory = ({ element }) => {
     isAmPmIndicatorExist: () => !!amPmIndicator(),
     toggleAmPmIndicator: () => ReactTestUtils.Simulate.click(amPmIndicator()),
     getAmPmIndicatorText: () => amPmIndicator().innerHTML,
+    getCustomSuffix: async () => {
+      const customSuffix = await customSuffixWrapper().element();
+      return customSuffix.innerHTML;
+    },
     isRtl: () => !!element.querySelector(`.${styles.rtl}`),
     setValue: value => input().enterText(value),
     blur: () => input().blur(),

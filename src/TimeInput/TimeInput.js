@@ -4,8 +4,9 @@ import isUndefined from 'lodash/isUndefined';
 import classNames from 'classnames';
 import moment from 'moment';
 import Text from '../Text';
-
 import Input from '../Input';
+import Box from '../Box';
+
 import styles from './TimeInput.scss';
 import { dataHooks } from './constants';
 
@@ -37,8 +38,13 @@ export default class TimePicker extends Component {
 
     style: PropTypes.object,
 
+    width: PropTypes.string,
+
     /** Number of minutes to be changed on arrow click */
     minutesStep: PropTypes.number,
+
+    /** Custom suffix, located before ticker */
+    customSuffix: PropTypes.node,
   };
 
   static defaultProps = {
@@ -49,6 +55,7 @@ export default class TimePicker extends Component {
     disabled: false,
     dashesWhenDisabled: false,
     minutesStep: 20,
+    width: 'auto',
   };
 
   constructor(props) {
@@ -63,7 +70,10 @@ export default class TimePicker extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.defaultValue !== this.props.defaultValue) {
+    if (
+      nextProps.defaultValue !== this.props.defaultValue ||
+      nextProps.disableAmPm !== this.props.disableAmPm
+    ) {
       this.setState(this.getInitTime(nextProps.defaultValue));
     }
   }
@@ -214,52 +224,65 @@ export default class TimePicker extends Component {
   };
 
   renderTimeTextbox() {
-    const text =
-      this.props.disabled && this.props.dashesWhenDisabled
-        ? '-- : --'
-        : this.state.text;
+    const { customSuffix, disabled, dashesWhenDisabled } = this.props;
+
+    const text = disabled && dashesWhenDisabled ? '-- : --' : this.state.text;
 
     const suffix = (
       <Input.Group>
-        {this.state.ampmMode && (
-          <Text
-            weight="normal"
-            skin={this.props.disabled ? 'disabled' : 'standard'}
-            className={styles.ampm}
-            onClick={this.handleAmPmClick}
-            dataHook={dataHooks.amPmIndicator}
+        <Box alignItems="center" justifyContent="space-between">
+          <Box verticalAlign="middle" flexGrow={0} marginRight="6px">
+            {this.state.ampmMode && (
+              <Text
+                weight="normal"
+                skin={disabled ? 'disabled' : 'standard'}
+                className={styles.ampm}
+                onClick={this.handleAmPmClick}
+                dataHook={dataHooks.amPmIndicator}
+              >
+                {this.state.am ? 'am' : 'pm'}
+              </Text>
+            )}
+          </Box>
+          <Box
+            align="right"
+            verticalAlign="middle"
+            className={styles.suffixEndWrapper}
           >
-            {this.state.am ? 'am' : 'pm'}
-          </Text>
-        )}
-        <Input.Ticker
-          upDisabled={this.props.disabled}
-          downDisabled={this.props.disabled}
-          onUp={this.handlePlus}
-          onDown={this.handleMinus}
-          dataHook={dataHooks.ticker}
-        />
+            {customSuffix && (
+              <Box marginRight="6px" dataHook={dataHooks.customSuffix}>
+                {customSuffix}
+              </Box>
+            )}
+            <Input.Ticker
+              upDisabled={disabled}
+              downDisabled={disabled}
+              onUp={this.handlePlus}
+              onDown={this.handleMinus}
+              dataHook={dataHooks.ticker}
+            />
+          </Box>
+        </Box>
       </Input.Group>
     );
 
     return (
-      <div className={styles.input}>
-        <Input
-          ref="input"
-          value={text}
-          onFocus={this.handleFocus}
-          onChange={this.handleInputChange}
-          onBlur={this.handleInputBlur}
-          suffix={suffix}
-          dataHook={dataHooks.input}
-          disabled={this.props.disabled}
-        />
-      </div>
+      <Input
+        ref="input"
+        value={text}
+        className={styles.input}
+        onFocus={this.handleFocus}
+        onChange={this.handleInputChange}
+        onBlur={this.handleInputBlur}
+        suffix={suffix}
+        dataHook={dataHooks.input}
+        disabled={disabled}
+      />
     );
   }
 
   render() {
-    const { className, style, dataHook, rtl, disabled } = this.props;
+    const { className, style, dataHook, rtl, disabled, width } = this.props;
     const { focus, hover } = this.state;
 
     return (
@@ -278,6 +301,7 @@ export default class TimePicker extends Component {
             hover: hover && !focus,
             rtl,
           })}
+          style={{ width }}
         >
           {this.renderTimeTextbox()}
         </div>
