@@ -75,14 +75,10 @@ class Timeline extends React.PureComponent {
   }
 
   render() {
-    const { dataHook, className, items } = this.props;
+    const { dataHook, items } = this.props;
 
     return (
-      <div
-        className={className}
-        {...styles('root', {}, this.props)}
-        data-hook={dataHook}
-      >
+      <div {...styles('root', {}, this.props)} data-hook={dataHook}>
         <div className={styles.timeline} data-hook={dataHooks.timelineList}>
           {items.map((item, idx) => this._getListItem(item, idx))}
         </div>
