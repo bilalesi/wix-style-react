@@ -111,6 +111,4 @@ Timeline.propTypes = {
   ).isRequired,
 };
 
-Timeline.defaultProps = {};
-
 export default Timeline;
