@@ -37,6 +37,6 @@ export const timelineDriverFactory = (base, body) => {
 
     /** label action wrapper by item id */
     getCustomPrefixElement: itemsId =>
-      base.$(`[data-hook="${dataHooks.timelineCustomPrefix}-${itemsId}"]`),
+      base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${itemsId}"]`),
   };
 };

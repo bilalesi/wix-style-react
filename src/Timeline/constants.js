@@ -5,6 +5,6 @@ export const dataHooks = {
   timelineTextSuffix: 'timeline-text-suffix',
   timelineSuffix: 'timeline-suffix',
   timelineDefaultPrefix: 'timeline-default-prefix',
-  timelineCustomPrefix: 'timeline-custom-prefix',
+  timelineBulletIndicator: 'timeline-bullet-indicator',
   timelineLabelAction: 'timeline-label-action',
 };

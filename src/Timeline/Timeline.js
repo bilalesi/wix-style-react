@@ -21,7 +21,7 @@ class Timeline extends React.PureComponent {
         <div className={styles.prefix}>
           {item.customPrefix ? (
             <div
-              data-hook={`${dataHooks.timelineCustomPrefix}-${item.id}`}
+              data-hook={`${dataHooks.timelineBulletIndicator}-${item.id}`}
               className={styles.prefixCustom}
             >
               {item.customPrefix}
