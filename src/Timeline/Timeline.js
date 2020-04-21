@@ -103,9 +103,13 @@ Timeline.propTypes = {
   /** timeline events items */
   items: PropTypes.arrayOf(
     PropTypes.shape({
+      /** event text */
       label: PropTypes.string,
+      /** action element in the end of event text */
       labelAction: PropTypes.node,
+      /** custom bullet element like icon or avatar */
       customPrefix: PropTypes.node,
+      /** suffix text or element placed on the right */
       suffix: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     }),
   ).isRequired,
