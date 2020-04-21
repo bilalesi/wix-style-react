@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import defaultTo from 'lodash/defaultTo';
 import classNames from 'classnames';
+import { ScrollSync } from 'react-scroll-sync';
 
 import style from './Table.st.css';
 import DataTable from './DataTable';
@@ -137,26 +138,28 @@ export class Table extends React.Component {
     }
 
     return (
-      <TableContext.Provider value={this.props}>
-        {showSelection ? (
-          <BulkSelection
-            ref={_ref => (this.bulkSelection = _ref)}
-            selectedIds={selectedIds}
-            deselectRowsByDefault={deselectRowsByDefault}
-            disabled={selectionDisabled}
-            hasMoreInBulkSelection={
-              infiniteScroll && Boolean(totalSelectableCount) && hasMore
-            }
-            totalCount={totalSelectableCount}
-            allIds={allIds}
-            onSelectionChanged={onSelectionChanged}
-          >
-            {this.renderChildren()}
-          </BulkSelection>
-        ) : (
-          this.renderChildren()
-        )}
-      </TableContext.Provider>
+      <ScrollSync proportional={false} horizontal vertical={false}>
+        <TableContext.Provider value={this.props}>
+          {showSelection ? (
+            <BulkSelection
+              ref={_ref => (this.bulkSelection = _ref)}
+              selectedIds={selectedIds}
+              deselectRowsByDefault={deselectRowsByDefault}
+              disabled={selectionDisabled}
+              hasMoreInBulkSelection={
+                infiniteScroll && Boolean(totalSelectableCount) && hasMore
+              }
+              totalCount={totalSelectableCount}
+              allIds={allIds}
+              onSelectionChanged={onSelectionChanged}
+            >
+              {this.renderChildren()}
+            </BulkSelection>
+          ) : (
+            this.renderChildren()
+          )}
+        </TableContext.Provider>
+      </ScrollSync>
     );
   }
 }
@@ -170,6 +173,7 @@ Table.defaultProps = {
   children: [<Table.Content key="content" />],
   withWrapper: true,
   showLastRowDivider: false,
+  stickyColumns: 0,
 };
 
 Table.propTypes = {
@@ -250,9 +254,9 @@ Table.propTypes = {
       sortable: PropTypes.bool,
       sortDescending: PropTypes.bool,
       infoTooltipProps: PropTypes.shape(TooltipCommonProps),
-      style: PropTypes.oneOf([PropTypes.object, PropTypes.func]),
+      style: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
       align: PropTypes.oneOf(['start', 'center', 'end']),
-      width: PropTypes.string,
+      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       important: PropTypes.bool,
     }),
   ).isRequired,
@@ -313,6 +317,8 @@ Table.propTypes = {
   width: PropTypes.string,
   /** Table styling. Supports `standard` and `neutral`. */
   skin: PropTypes.oneOf(['standard', 'neutral']),
+  /** Number of columns to sticky from the left. */
+  stickyColumns: PropTypes.number,
 };
 
 // export default Table;
