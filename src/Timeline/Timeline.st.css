@@ -65,6 +65,10 @@
   display: inline-block;
 }
 
+.timeline .event .labelText{
+  margin-right: 6px;
+}
+
 .timeline .event .suffix{
   width: 30%;
   display: inline-block;

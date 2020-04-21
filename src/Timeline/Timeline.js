@@ -38,10 +38,10 @@ class Timeline extends React.PureComponent {
             dataHook={`${dataHooks.timelineLabel}-${idx}`}
             weight="normal"
             size="small"
+            className={styles.labelText}
           >
             {item.label}
           </Text>
-          <span> </span>
           {item.labelAction ? (
             <div
               className={styles.labelAction}
