@@ -10,33 +10,31 @@ export const timelineDriverFactory = (base, body) => {
       base.$(`[data-hook="${dataHooks.timelineList}"]`).exists(),
 
     /** Get the label text by item id */
-    getLabelText: async itemsId =>
-      await base
-        .$(`[data-hook="${dataHooks.timelineLabel}-${itemsId}"]`)
-        .text(),
+    getLabelText: async index =>
+      await base.$(`[data-hook="${dataHooks.timelineLabel}-${index}"]`).text(),
 
     /** Get the suffix text by item id */
-    getSuffixText: async itemsId =>
+    getSuffixText: async index =>
       await base
-        .$(`[data-hook="${dataHooks.timelineTextSuffix}-${itemsId}"]`)
+        .$(`[data-hook="${dataHooks.timelineTextSuffix}-${index}"]`)
         .text(),
 
     /** custom suffix wrapper by item id */
-    getCustomSuffixElement: itemsId =>
-      base.$(`[data-hook="${dataHooks.timelineSuffix}-${itemsId}"]`),
+    getCustomSuffixElement: index =>
+      base.$(`[data-hook="${dataHooks.timelineSuffix}-${index}"]`),
 
     /** label action wrapper by item id */
-    getLabelActionElement: itemsId =>
-      base.$(`[data-hook="${dataHooks.timelineLabelAction}-${itemsId}"]`),
+    getLabelActionElement: index =>
+      base.$(`[data-hook="${dataHooks.timelineLabelAction}-${index}"]`),
 
     /** Is default prefix wrapper by item id */
-    isDefaultPrefixExists: async itemsId =>
+    isDefaultPrefixExists: async index =>
       await base
-        .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${itemsId}"]`)
+        .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${index}"]`)
         .exists(),
 
     /** bullet indicator wrapper by item id */
-    getBulletIndicatorElement: itemsId =>
-      base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${itemsId}"]`),
+    getBulletIndicatorElement: index =>
+      base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${index}"]`),
   };
 };

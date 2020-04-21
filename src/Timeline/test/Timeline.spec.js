@@ -20,37 +20,34 @@ describe(Timeline.displayName, () => {
   it('should render timeline with basic item', async () => {
     const items = [
       {
-        id: 'item-id-1',
         label: 'timeline item number 1',
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getLabelText(items[0].id)).toEqual(items[0].label);
-    expect(await driver.isDefaultPrefixExists(items[0].id)).toEqual(true);
+    expect(await driver.getLabelText(0)).toEqual(items[0].label);
+    expect(await driver.isDefaultPrefixExists(0)).toEqual(true);
   });
 
   it('should render timeline with text suffix', async () => {
     const items = [
       {
-        id: 'item-id-1',
         label: 'timeline item number 1',
         suffix: 'suffix text',
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getSuffixText(items[0].id)).toEqual(items[0].suffix);
+    expect(await driver.getSuffixText(0)).toEqual(items[0].suffix);
   });
 
   it('should render timeline with suffix element', async () => {
     const items = [
       {
-        id: 'item-id-1',
         label: 'timeline item number 1',
         suffix: <div>suffix node</div>,
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getCustomSuffixElement(items[0].id).text()).toEqual(
+    expect(await driver.getCustomSuffixElement(0).text()).toEqual(
       'suffix node',
     );
   });
@@ -58,27 +55,23 @@ describe(Timeline.displayName, () => {
   it('should render timeline with label action element', async () => {
     const items = [
       {
-        id: 'item-id-1',
         label: 'timeline item number 1',
         labelAction: <div>label node</div>,
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getLabelActionElement(items[0].id).text()).toEqual(
-      'label node',
-    );
+    expect(await driver.getLabelActionElement(0).text()).toEqual('label node');
   });
 
   it('should render timeline with custom prefix element', async () => {
     const items = [
       {
-        id: 'item-id-1',
         label: 'timeline item number 1',
         customPrefix: <div>custom prefix node</div>,
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getBulletIndicatorElement(items[0].id).text()).toEqual(
+    expect(await driver.getBulletIndicatorElement(0).text()).toEqual(
       'custom prefix node',
     );
   });
