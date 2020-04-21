@@ -78,7 +78,7 @@ describe(Timeline.displayName, () => {
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getCustomPrefixElement(items[0].id).text()).toEqual(
+    expect(await driver.getBulletIndicatorElement(items[0].id).text()).toEqual(
       'custom prefix node',
     );
   });
