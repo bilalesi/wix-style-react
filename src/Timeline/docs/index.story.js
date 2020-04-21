@@ -76,8 +76,7 @@ export default {
         sections: [
           description({
             title: 'Description',
-            text:
-              'This line here should briefly describe component in just a sentence or two. It should be short and easy to read.',
+            text: 'A component to display events in a vertical timeline format',
           }),
 
           importExample(),
