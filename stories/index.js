@@ -133,6 +133,7 @@ require('../src/Text/docs/index.story');
 require('../src/TextButton/docs/index.story');
 require('../src/Thumbnail/docs/index.story');
 require('../src/TimeInput/docs/index.story');
+require('../src/Timeline/docs/index.story');
 require('../src/TimeTable/docs/index.story');
 require('../src/ToggleButton/docs/index.story');
 require('../src/ToggleSwitch/docs/index.story');
@@ -182,6 +183,3 @@ require('./PopoverMenu/index.story'); // 7.3 PopoverMenu
 // require('../src/CustomModalLayout/docs/design.story'); // 9.3 Custom Modal (WIP)
 require('./ModalMobileLayout/index.story'); // 9.5 Mobile Modal
 require('../src/MessageBox/docs');
-
-// TODO: move to correct position
-require('../src/Timeline/docs/index.story');
