@@ -11,31 +11,31 @@ class Timeline extends React.PureComponent {
 
   _isString = a => typeof a === 'string';
 
-  _getListItem(item, index) {
+  _getListItem(item, idx) {
     return (
       <div
         className={styles.event}
-        data-hook={`${dataHooks.timelineListEvent}-${index}`}
-        key={`${dataHooks.timelineListEvent}-${index}`}
+        data-hook={`${dataHooks.timelineListEvent}-${idx}`}
+        key={`${dataHooks.timelineListEvent}-${idx}`}
       >
         <div className={styles.prefix}>
           {item.customPrefix ? (
             <div
-              data-hook={`${dataHooks.timelineBulletIndicator}-${index}`}
+              data-hook={`${dataHooks.timelineBulletIndicator}-${idx}`}
               className={styles.prefixCustom}
             >
               {item.customPrefix}
             </div>
           ) : (
             <div
-              data-hook={`${dataHooks.timelineDefaultPrefix}-${index}`}
+              data-hook={`${dataHooks.timelineDefaultPrefix}-${idx}`}
               className={styles.prefixDefault}
             />
           )}
         </div>
         <div className={styles.label}>
           <Text
-            dataHook={`${dataHooks.timelineLabel}-${index}`}
+            dataHook={`${dataHooks.timelineLabel}-${idx}`}
             weight="normal"
             size="small"
           >
@@ -45,7 +45,7 @@ class Timeline extends React.PureComponent {
           {item.labelAction ? (
             <div
               className={styles.labelAction}
-              data-hook={`${dataHooks.timelineLabelAction}-${index}`}
+              data-hook={`${dataHooks.timelineLabelAction}-${idx}`}
             >
               {item.labelAction}
             </div>
@@ -54,11 +54,11 @@ class Timeline extends React.PureComponent {
         {item.suffix ? (
           <div
             className={styles.suffix}
-            data-hook={`${dataHooks.timelineSuffix}-${index}`}
+            data-hook={`${dataHooks.timelineSuffix}-${idx}`}
           >
             {this._isString(item.suffix) ? (
               <Text
-                dataHook={`${dataHooks.timelineTextSuffix}-${index}`}
+                dataHook={`${dataHooks.timelineTextSuffix}-${idx}`}
                 skin="disabled"
                 weight="normal"
                 size="small"
@@ -84,7 +84,7 @@ class Timeline extends React.PureComponent {
         data-hook={dataHook}
       >
         <div className={styles.timeline} data-hook={dataHooks.timelineList}>
-          {items.map((item, index) => this._getListItem(item, index))}
+          {items.map((item, idx) => this._getListItem(item, idx))}
         </div>
       </div>
     );

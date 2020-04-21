@@ -9,32 +9,32 @@ export const timelineDriverFactory = (base, body) => {
     isTimelineExists: () =>
       base.$(`[data-hook="${dataHooks.timelineList}"]`).exists(),
 
-    /** Get the label text by index */
-    getLabelText: async index =>
-      await base.$(`[data-hook="${dataHooks.timelineLabel}-${index}"]`).text(),
+    /** Get the label text by idx */
+    getLabelText: async idx =>
+      await base.$(`[data-hook="${dataHooks.timelineLabel}-${idx}"]`).text(),
 
-    /** Get the suffix text by index */
-    getSuffixText: async index =>
+    /** Get the suffix text by idx */
+    getSuffixText: async idx =>
       await base
-        .$(`[data-hook="${dataHooks.timelineTextSuffix}-${index}"]`)
+        .$(`[data-hook="${dataHooks.timelineTextSuffix}-${idx}"]`)
         .text(),
 
-    /** Get the custom suffix element by index */
-    getCustomSuffixElement: index =>
-      base.$(`[data-hook="${dataHooks.timelineSuffix}-${index}"]`),
+    /** Get the custom suffix element by idx */
+    getCustomSuffixElement: idx =>
+      base.$(`[data-hook="${dataHooks.timelineSuffix}-${idx}"]`),
 
-    /** Get the label action element by index */
-    getLabelActionElement: index =>
-      base.$(`[data-hook="${dataHooks.timelineLabelAction}-${index}"]`),
+    /** Get the label action element by idx */
+    getLabelActionElement: idx =>
+      base.$(`[data-hook="${dataHooks.timelineLabelAction}-${idx}"]`),
 
-    /** Is default prefix wrapper by index */
-    isDefaultPrefixExists: async index =>
+    /** Is default prefix wrapper by idx */
+    isDefaultPrefixExists: async idx =>
       await base
-        .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${index}"]`)
+        .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${idx}"]`)
         .exists(),
 
-    /** bullet indicator wrapper by index */
-    getBulletIndicatorElement: index =>
-      base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${index}"]`),
+    /** bullet indicator wrapper by idx */
+    getBulletIndicatorElement: idx =>
+      base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${idx}"]`),
   };
 };
