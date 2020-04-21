@@ -125,6 +125,7 @@ const javascriptFiles = [
   ['TextButton.bundle.min.js', 14],
   ['Thumbnail.bundle.min.js', 14],
   ['TimeInput.bundle.min.js', 84],
+  ['Timeline.bundle.min.js', 10],
   ['TimeTable.bundle.min.js', 74],
   ['ToggleButton.bundle.min.js', 43],
   ['ToggleSwitch.bundle.min.js', 17],
@@ -133,7 +134,6 @@ const javascriptFiles = [
   ['VerticalTabs.bundle.min.js', 13],
   ['VerticalTabsItem.bundle.min.js', 13],
   ['WarningIndicator.bundle.min.js', 40],
-  ['Timeline.bundle.min.js', 10],
 ];
 
 const cssFiles = [
@@ -228,12 +228,12 @@ const cssFiles = [
   ['Tabs.min.css', 2],
   ['Tag.min.css', 2],
   ['TimeInput.min.css', 6],
+  ['Timeline.min.css', 1],
   ['TimeTable.min.css', 2],
   ['ToggleButton.min.css', 2],
   ['Tooltip.min.css', 2],
   ['VariableInput.min.css', 2],
   ['WarningIndicator.min.css', 2],
-  ['Timeline.min.css', 1],
 ];
 
 const getJS = () =>
