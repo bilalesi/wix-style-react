@@ -9,31 +9,31 @@ export const timelineDriverFactory = (base, body) => {
     isTimelineExists: () =>
       base.$(`[data-hook="${dataHooks.timelineList}"]`).exists(),
 
-    /** Get the label text by item id */
+    /** Get the label text by index */
     getLabelText: async index =>
       await base.$(`[data-hook="${dataHooks.timelineLabel}-${index}"]`).text(),
 
-    /** Get the suffix text by item id */
+    /** Get the suffix text by index */
     getSuffixText: async index =>
       await base
         .$(`[data-hook="${dataHooks.timelineTextSuffix}-${index}"]`)
         .text(),
 
-    /** custom suffix wrapper by item id */
+    /** Get the custom suffix element by index */
     getCustomSuffixElement: index =>
       base.$(`[data-hook="${dataHooks.timelineSuffix}-${index}"]`),
 
-    /** label action wrapper by item id */
+    /** Get the label action element by index */
     getLabelActionElement: index =>
       base.$(`[data-hook="${dataHooks.timelineLabelAction}-${index}"]`),
 
-    /** Is default prefix wrapper by item id */
+    /** Is default prefix wrapper by index */
     isDefaultPrefixExists: async index =>
       await base
         .$(`[data-hook="${dataHooks.timelineDefaultPrefix}-${index}"]`)
         .exists(),
 
-    /** bullet indicator wrapper by item id */
+    /** bullet indicator wrapper by index */
     getBulletIndicatorElement: index =>
       base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${index}"]`),
   };
