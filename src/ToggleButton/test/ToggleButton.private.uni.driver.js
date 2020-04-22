@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { toggleButtonDriverFactory } from '../ToggleButton.uni.driver';
 import { tooltipDriverFactory } from '../../Tooltip/Tooltip.uni.driver';
 
