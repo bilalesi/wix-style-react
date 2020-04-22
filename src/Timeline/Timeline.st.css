@@ -2,14 +2,7 @@
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named: D30,D80;
 }
-
-.root {
-  text-align: center;
-  background-color: value(D80);
-  padding-left: 23px;
-  padding-right: 30px;
-  padding-top: 28px;
-}
+.root {}
 
 .timeline {
   display: block;
