@@ -29,7 +29,7 @@ class Timeline extends React.PureComponent {
           ) : (
             <div
               data-hook={`${dataHooks.timelineDefaultPrefix}-${idx}`}
-              className={styles.prefixDefault}
+              className={styles.bulletIndicator}
             />
           )}
         </div>
