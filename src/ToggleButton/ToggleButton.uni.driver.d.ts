@@ -4,6 +4,7 @@ import { ButtonNextDriver } from 'wix-ui-core/drivers/unidriver';
 export interface ToggleButtonUniDriver extends BaseUniDriver {
   isButtonDisabled: ButtonNextDriver['isButtonDisabled'];
   getSkin: () => Promise<string | null>;
+  getShape: () => Promise<string | null>;
   isButtonSelected: () => Promise<boolean>;
   getLabelPlacement: () => Promise<string>;
   getLabelValue: () => Promise<string>;

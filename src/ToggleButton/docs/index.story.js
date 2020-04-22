@@ -37,6 +37,7 @@ export default {
     as: 'button',
     children: <CropRotate />,
     skin: 'standard',
+    shape: 'square',
     size: 'medium',
     selected: false,
     disabled: false,
@@ -81,7 +82,7 @@ export default {
             example({
               title: 'Skin',
               text:
-                'Toggle supports 1 skin style – `standard`. Skin `dark` is deprecated.',
+                'Toggle supports 2 skin styles – `standard` and `inverted`. Skin `dark` is deprecated.',
               source: examples.skins,
             }),
 
@@ -90,6 +91,13 @@ export default {
               text:
                 'Toggle Button supports 4 sizes: `tiny`, `small`, `medium` (default) and `large`',
               source: examples.sizes,
+            }),
+
+            example({
+              title: 'Shape',
+              text:
+                'Toggle Button supports 2 shapes: `square` (default) or `round`',
+              source: examples.shapes,
             }),
 
             example({

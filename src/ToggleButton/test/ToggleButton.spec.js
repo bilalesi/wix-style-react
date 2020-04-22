@@ -15,7 +15,7 @@ describe('ToggleButton', () => {
   const render = createRendererWithUniDriver(toggleButtonPrivateDriverFactory);
 
   describe('`skin` prop', () => {
-    it.each(['standard', 'dark'])('should apply %s skin', async skin => {
+    it.each(['standard', 'inverted'])('should apply %s skin', async skin => {
       const props = {
         skin,
         labelValue: 'crop&rotate',
@@ -44,6 +44,19 @@ describe('ToggleButton', () => {
       const { driver } = render(<ToggleButton {...props} />);
 
       expect(await driver.getIconSize()).toEqual(expected);
+    });
+  });
+
+  describe(`'shape' prop`, () => {
+    it.each(['square', 'round'])('should apply %s shape', async shape => {
+      const props = {
+        shape,
+        labelValue: 'crop&rotate',
+        children: <CropRotate />,
+      };
+      const { driver } = render(<ToggleButton {...props} />);
+
+      expect(await driver.getShape()).toEqual(shape);
     });
   });
 

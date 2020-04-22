@@ -56,6 +56,82 @@ const tests = [
           children: <CropRotate />,
         },
       },
+      {
+        it: 'inverted',
+        props: {
+          skin: 'inverted',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'inverted selected',
+        props: {
+          skin: 'inverted',
+          selected: true,
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+    ],
+  },
+  {
+    describe: 'shape',
+    its: [
+      {
+        it: 'square',
+        props: {
+          shape: 'square',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'round',
+        props: {
+          shape: 'round',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'round selected',
+        props: {
+          shape: 'round',
+          selected: true,
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'round inverted selected',
+        props: {
+          shape: 'round',
+          skin: 'inverted',
+          selected: true,
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'round disabled',
+        props: {
+          shape: 'round',
+          disabled: true,
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'round disabled selected',
+        props: {
+          shape: 'round',
+          disabled: true,
+          selected: true,
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
     ],
   },
   {
@@ -87,6 +163,14 @@ const tests = [
       },
       {
         it: 'true',
+        props: {
+          disabled: true,
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'true selected',
         props: {
           disabled: true,
           selected: true,

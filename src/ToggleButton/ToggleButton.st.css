@@ -10,13 +10,13 @@
 
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: B10, D55, D80, B20, B50, B40, F00, D10, D20, D30;
+  -st-named: B10, B20, D55, D80, B20, B50, B40, F00, D10, D20, D30, D60, D10-30, D80-70, B30;
 }
 
 /* root */
 .root {
   -st-extends: ButtonNext;
-  -st-states: selected, disabled, skin(enum(standard, dark)),
+  -st-states: selected, disabled, skin(enum(standard, dark, inverted)),
     labelPlacement(enum(tooltip, end, bottom));
 
   padding: 0;
@@ -70,6 +70,16 @@
   background-color: value(D80);
 }
 
+.root:disabled:selected .icon {
+  color: value(D80-70);
+  background-color: value(D10-30);
+}
+
+.root:labelPlacement(end),
+.root:labelPlacement(bottom) {
+  max-width: 100%;
+}
+
 /* skin Dark */
 .root:skin(dark):hover:not(:disabled),
 .root:skin(dark):hover:not(:disabled) .label {
@@ -114,10 +124,31 @@
   background-color: value(D80);
 }
 
+/* skin Inverted */
+.root:skin(inverted):selected:hover:not(:disabled),
+.root:skin(inverted):selected:not(:disabled) {
+  color: value(D80);
+}
+.root:skin(inverted):selected:not(:disabled) .icon {
+  background-color: value(B10);
+}
+.root:skin(inverted):selected:hover:not(:disabled) .icon {
+  background-color: value(B20);
+}
+
+/* skin Inverted shape Round */
+.root:skin(inverted):selected .icon:shape(round) {
+  border: solid 1px value(B10);
+}
+.root:skin(inverted):selected:hover .icon:shape(round) {
+  border: solid 1px value(B20);
+}
+
 /* icon */
 .icon {
   -st-extends: Focusable;
-  -st-states: size(enum(tiny, small, medium, large));
+  -st-states: size(enum(tiny, small, medium, large)),
+    shape(enum(square, round));
 
   display: flex;
   align-items: center;
@@ -149,6 +180,35 @@
 .icon:size(large) {
   border-radius: 6px;
   padding: 9px;
+}
+
+/* shape Round */
+.icon:shape(round) {
+  border: solid 1px value(D60);
+  border-radius: 100%;
+}
+
+.root:hover .icon:shape(round) {
+  border: solid 1px value(B40);
+}
+
+.root:active .icon:shape(round),
+.root:selected .icon:shape(round),
+.root:selected:hover .icon:shape(round) {
+  border: solid 1px value(B30);
+}
+
+.root:disabled .icon:shape(round) {
+  border: solid 1px value(D10-30);
+}
+
+.root:disabled:selected .icon:shape(round) {
+  border: solid 1px transparent;
+}
+
+.root:labelPlacement(end) .icon,
+.root:labelPlacement(bottom) .icon {
+  max-width: 100%;
 }
 
 /* label */

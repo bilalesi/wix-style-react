@@ -16,4 +16,4 @@ export type ToggleButtonProps = ButtonWithAsProp<{
 
 export default class ToggleButton extends React.Component<ToggleButtonProps> {}
 
-export type ToggleButtonSkin = 'standard' | 'dark';
+export type ToggleButtonSkin = 'standard' | 'dark' | 'inverted';

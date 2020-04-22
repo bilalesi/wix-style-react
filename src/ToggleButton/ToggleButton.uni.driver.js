@@ -26,6 +26,8 @@ export const toggleButtonDriverFactory = (base, body) => {
     isButtonDisabled: buttonDriver.isButtonDisabled,
     /** returns skin value, applied to a button */
     getSkin: async () => await base.attr('data-skin'),
+    /** returns shape value, applied to a button */
+    getShape: async () => await base.attr('data-shape'),
     /** returns true if button is selected */
     isButtonSelected: async () => (await base.attr('data-selected')) === 'true',
     /** returns label placement value */

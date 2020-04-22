@@ -22,6 +22,7 @@ class Icon extends PureComponent {
     const {
       children,
       size,
+      shape,
       tooltipProps,
       tooltipDisabled,
       labelValue,
@@ -48,7 +49,7 @@ class Icon extends PureComponent {
         >
           <span>
             <div
-              {...styles('icon', { size }, this.props)}
+              {...styles('icon', { size, shape }, this.props)}
               tabIndex={1}
               onBlur={focusableOnBlur}
               onFocus={focusableOnFocus}
@@ -76,9 +77,11 @@ class ToggleButton extends PureComponent {
     /** Used for passing any wix-style-react icon. For external icon make sure to follow ux sizing guidelines */
     children: node,
     /** Button skins */
-    skin: oneOf(['standard', 'dark']),
+    skin: oneOf(['standard', 'dark', 'inverted']),
     /** Button size */
     size: oneOf(['tiny', 'small', 'medium', 'large']),
+    /** Button shape */
+    shape: oneOf(['square', 'round']),
     /** Label content */
     labelValue: node,
     /** Label placement */
@@ -100,6 +103,7 @@ class ToggleButton extends PureComponent {
   static defaultProps = {
     skin: 'standard',
     size: 'medium',
+    shape: 'square',
     disabled: false,
     labelValue: '',
     labelPlacement: 'tooltip',
@@ -134,6 +138,7 @@ class ToggleButton extends PureComponent {
     const {
       children,
       size,
+      shape,
       skin,
       tooltipProps,
       labelValue,
@@ -154,10 +159,12 @@ class ToggleButton extends PureComponent {
         data-placement={labelPlacement}
         data-selected={selected}
         data-skin={skin}
+        data-shape={shape}
         disabled={disabled}
       >
         <ToggleButtonIcon
           size={size}
+          shape={shape}
           tooltipProps={tooltipProps}
           labelValue={labelValue}
           tooltipDisabled={labelPlacement !== 'tooltip'}
