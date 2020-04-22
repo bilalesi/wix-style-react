@@ -20,6 +20,7 @@ import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 
 import TextButton from '../../TextButton';
+import Card from '../../Card';
 import Timeline from '..';
 
 const example = config => baseExample({ components: allComponents, ...config });

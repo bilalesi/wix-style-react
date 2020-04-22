@@ -59,5 +59,5 @@ export const simple = `() => {
     },
   ];
 
-  return <Timeline items={items} />;
+  return <Card><Card.Content><Timeline items={items} /></Card.Content></Card>;
 }`;
