@@ -51,12 +51,12 @@ class Timeline extends React.PureComponent {
             </div>
           ) : null}
         </div>
-        {item.suffix ? (
-          <div
-            className={styles.suffix}
-            data-hook={`${dataHooks.timelineSuffix}-${idx}`}
-          >
-            {this._isString(item.suffix) ? (
+        <div
+          className={styles.suffix}
+          data-hook={`${dataHooks.timelineSuffix}-${idx}`}
+        >
+          {item.suffix ? (
+            this._isString(item.suffix) ? (
               <Text
                 dataHook={`${dataHooks.timelineTextSuffix}-${idx}`}
                 skin="disabled"
@@ -67,9 +67,9 @@ class Timeline extends React.PureComponent {
               </Text>
             ) : (
               item.suffix
-            )}
-          </div>
-        ) : null}
+            )
+          ) : null}
+        </div>
       </li>
     );
   }
