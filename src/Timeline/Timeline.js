@@ -13,7 +13,7 @@ class Timeline extends React.PureComponent {
 
   _getListItem(item, idx) {
     return (
-      <div
+      <li
         className={styles.event}
         data-hook={`${dataHooks.timelineListEvent}-${idx}`}
         key={`${dataHooks.timelineListEvent}-${idx}`}
@@ -70,7 +70,7 @@ class Timeline extends React.PureComponent {
             )}
           </div>
         ) : null}
-      </div>
+      </li>
     );
   }
 
@@ -79,9 +79,9 @@ class Timeline extends React.PureComponent {
 
     return (
       <div {...styles('root', {}, this.props)} data-hook={dataHook}>
-        <div className={styles.timeline} data-hook={dataHooks.timelineList}>
+        <ul className={styles.timeline} data-hook={dataHooks.timelineList}>
           {items.map((item, idx) => this._getListItem(item, idx))}
-        </div>
+        </ul>
       </div>
     );
   }
