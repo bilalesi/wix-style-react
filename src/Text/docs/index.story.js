@@ -83,7 +83,7 @@ export default {
                   <SectionHelper title="Helvetica Neue:">{`<link rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css"></link>`}</SectionHelper>
                   <p>
                     For Madefor font, plese see{' '}
-                    <LinkTo kind={Category.GETTINGSTARTED} story="Medefor Font">
+                    <LinkTo kind={Category.GETTINGSTARTED} story="Madefor Font">
                       MadeforFont
                     </LinkTo>{' '}
                     section.

@@ -6,7 +6,7 @@ import { Text } from '../../src';
 
 export default {
   category: Category.GETTINGSTARTED,
-  storyName: 'Medefor Font',
+  storyName: 'Madefor Font',
 
   sections: [
     header(),
