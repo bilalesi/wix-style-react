@@ -55,7 +55,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
           </div>
         );
       },
-      width: '12px',
+      width: tableProps.stickyColumns === 1 ? '30px' : '12px',
       style: (_, row) => (row.unselectable ? undefined : { cursor: 'pointer' }),
     };
   };

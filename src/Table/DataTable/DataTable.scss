@@ -202,7 +202,21 @@ $rowShadow: inset 0 1px 0 0 $D70;
 }
 
 .selected {
-  box-shadow: inset 2px 0px 0px 0px $B10;
+  td:first-child {
+    &:not(.sticky) {
+      position: relative;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background-color: $B10;
+    }
+  }
 }
 
 .sortArrow {
