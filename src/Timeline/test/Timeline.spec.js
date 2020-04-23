@@ -51,16 +51,16 @@ describe(Timeline.displayName, () => {
     );
   });
 
-  // it('should render timeline with label action element', async () => {
-  //   const items = [
-  //     {
-  //       label: 'timeline item number 1',
-  //       labelAction: <div>label node</div>,
-  //     },
-  //   ];
-  //   const { driver } = render(<Timeline items={items} />);
-  //   expect(await driver.getLabelActionElement(0).text()).toEqual('label node');
-  // });
+  it('should render timeline with label action element', async () => {
+    const items = [
+      {
+        label: 'timeline item number 1',
+        labelAction: <div>label node</div>,
+      },
+    ];
+    const { driver } = render(<Timeline items={items} />);
+    expect(await driver.getLabelActionElement(0).text()).toEqual('label node');
+  });
 
   it('should render timeline with custom prefix element', async () => {
     const items = [

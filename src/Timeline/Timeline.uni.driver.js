@@ -14,13 +14,5 @@ export const timelineDriverFactory = (base, body) => {
       await base
         .$(`[data-hook="${dataHooks.timelineTextSuffix}-${idx}"]`)
         .text(),
-
-    /** Get the custom suffix element by idx */
-    getCustomSuffixElement: idx =>
-      base.$(`[data-hook="${dataHooks.timelineSuffix}-${idx}"]`),
-
-    /** bullet indicator wrapper by idx */
-    getBulletIndicatorElement: idx =>
-      base.$(`[data-hook="${dataHooks.timelineBulletIndicator}-${idx}"]`),
   };
 };

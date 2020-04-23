@@ -16,7 +16,6 @@ class TimelineItem extends React.PureComponent {
       <li
         className={styles.event}
         data-hook={`${dataHooks.timelineListEvent}-${idx}`}
-        key={`${dataHooks.timelineListEvent}-${idx}`}
       >
         <div className={styles.prefix}>
           {item.customPrefix ? (
