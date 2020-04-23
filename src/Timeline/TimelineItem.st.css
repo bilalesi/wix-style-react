@@ -19,7 +19,6 @@
 
 .event .prefix{
   width: 25px;
-  display: inline-block;
 }
 
 .event .prefix .bulletIndicator{
@@ -46,7 +45,6 @@
 
 .event .label{
   width: 75%;
-  display: inline-block;
   margin-right: 18px;
 }
 
@@ -56,7 +54,6 @@
 
 .event .suffix{
   width: 25%;
-  display: inline-block;
   text-align: right;
   vertical-align: top;
   padding-top: 3px;
