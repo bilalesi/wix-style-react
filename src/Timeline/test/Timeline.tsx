@@ -7,7 +7,7 @@ import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 
 function timelineWithMandatoryProps() {
-  return <Timeline />;
+  return <Timeline items={[]}/>;
 }
 
 function timelineWithAllProps() {
@@ -15,7 +15,7 @@ function timelineWithAllProps() {
     <Timeline
       dataHook="dataHook"
       className="className"
-      buttonText="buttonText"
+      items={[]}
     />
   );
 }
