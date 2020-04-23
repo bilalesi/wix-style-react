@@ -77,6 +77,7 @@
 
 .root:labelPlacement(end),
 .root:labelPlacement(bottom) {
+  display: block;
   max-width: 100%;
 }
 
@@ -234,4 +235,8 @@
 
 .label:placement(bottom) {
   margin-top: 9px;
+}
+
+.tooltip {
+  max-width: 100%;
 }

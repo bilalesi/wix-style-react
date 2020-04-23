@@ -41,6 +41,7 @@ class Icon extends PureComponent {
     return (
       children && (
         <Tooltip
+          {...styles('tooltip')}
           {...tooltipProps}
           dataHook="toggle-button-tooltip"
           size="small"
