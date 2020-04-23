@@ -5,10 +5,10 @@ import Text from '../Text';
 import styles from './TimelineItem.st.css';
 import { dataHooks } from './constants';
 
+const _isString = a => typeof a === 'string';
+
 /** A timeline item is a display of a timeline event */
 class TimelineItem extends React.PureComponent {
-  _isString = a => typeof a === 'string';
-
   render() {
     const { idx, item } = this.props;
 
@@ -56,7 +56,7 @@ class TimelineItem extends React.PureComponent {
           data-hook={`${dataHooks.timelineSuffix}-${idx}`}
         >
           {item.suffix ? (
-            this._isString(item.suffix) ? (
+            _isString(item.suffix) ? (
               <Text
                 dataHook={`${dataHooks.timelineTextSuffix}-${idx}`}
                 skin="disabled"
