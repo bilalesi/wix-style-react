@@ -46,9 +46,7 @@ describe(Timeline.displayName, () => {
       },
     ];
     const { driver } = render(<Timeline items={items} />);
-    expect(await driver.getCustomSuffixElement(0).text()).toEqual(
-      'suffix node',
-    );
+    expect(await driver.getSuffixElement(0).text()).toEqual('suffix node');
   });
 
   it('should render timeline with label action element', async () => {

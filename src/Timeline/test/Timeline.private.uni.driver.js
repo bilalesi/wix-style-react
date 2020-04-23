@@ -6,8 +6,8 @@ export const timelinePrivateDriverFactory = (base, body) => {
     ...publicDriverFactory(base, body),
 
     // Add here driver methods that considered "private"
-    /** Get the custom suffix element by idx */
-    getCustomSuffixElement: idx =>
+    /** Get the suffix element by idx */
+    getSuffixElement: idx =>
       base.$(`[data-hook="${dataHooks.timelineSuffix}-${idx}"]`),
 
     /** Get the label action element by idx */
