@@ -11,18 +11,16 @@ class Timeline extends React.PureComponent {
     const { dataHook, items } = this.props;
 
     return (
-      <div {...styles('root', {}, this.props)} data-hook={dataHook}>
-        <ul className={styles.timeline} data-hook={dataHooks.timelineList}>
-          {items.map((item, idx) => (
-            <TimelineItem
-              key={idx}
-              item={item}
-              idx={idx}
-              dataHook={`${dataHooks.timelineListEvent}-${idx}`}
-            />
-          ))}
-        </ul>
-      </div>
+      <ul {...styles('timeline', {}, this.props)} data-hook={dataHook}>
+        {items.map((item, idx) => (
+          <TimelineItem
+            key={idx}
+            item={item}
+            idx={idx}
+            dataHook={`${dataHooks.timelineListEvent}-${idx}`}
+          />
+        ))}
+      </ul>
     );
   }
 }

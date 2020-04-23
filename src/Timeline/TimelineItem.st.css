@@ -2,7 +2,6 @@
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named: D30,D80;
 }
-.root {}
 
 .event {
   position: relative;

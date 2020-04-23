@@ -1,5 +1,4 @@
 export const dataHooks = {
-  timelineList: 'timeline-list',
   timelineListEvent: 'timeline-list-event',
   timelineLabel: 'timeline-label',
   timelineTextSuffix: 'timeline-text-suffix',

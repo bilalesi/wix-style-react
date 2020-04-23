@@ -1,9 +1,3 @@
-:import {
-  -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D30,D80;
-}
-.root {}
-
 .timeline {
   position: relative;
   list-style: none;
