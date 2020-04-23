@@ -77,7 +77,6 @@ export function getDataTableProps(tableProps) {
   return {
     ...props,
     rowClass: classNames(tableProps.rowClass, style.tableRow),
-    enableScrollSync: true,
   };
 }
 
@@ -91,6 +90,20 @@ export class Table extends React.Component {
   static Content = TableContent;
   static EmptyState = TableEmptyState;
   static BulkSelectionCheckbox = TableBulkSelectionCheckbox;
+
+  state = {
+    leftShadowVisible: false,
+    rightShadowVisible: false,
+  };
+
+  _handleUpdateScrollShadows = (leftShadowVisible, rightShadowVisible) => {
+    if (leftShadowVisible !== this.state.leftShadowVisible) {
+      this.setState({ leftShadowVisible });
+    }
+    if (rightShadowVisible !== this.state.rightShadowVisible) {
+      this.setState({ rightShadowVisible });
+    }
+  };
 
   shouldComponentUpdate() {
     // Table is not really a PureComponent
@@ -138,9 +151,17 @@ export class Table extends React.Component {
       allIds = allIds.filter(rowId => rowId !== hasUnselectablesSymbol);
     }
 
+    const { leftShadowVisible, rightShadowVisible } = this.state;
+    const contextValue = {
+      ...this.props,
+      leftShadowVisible,
+      rightShadowVisible,
+      onUpdateScrollShadows: this._handleUpdateScrollShadows,
+    };
+
     return (
       <ScrollSync proportional={false} horizontal vertical={false}>
-        <TableContext.Provider value={this.props}>
+        <TableContext.Provider value={contextValue}>
           {showSelection ? (
             <BulkSelection
               ref={_ref => (this.bulkSelection = _ref)}

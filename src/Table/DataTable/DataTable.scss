@@ -235,10 +235,49 @@ $rowShadow: inset 0 1px 0 0 $D70;
   }
 }
 
-.tableHeaderScrollWrapper {
+.tableHeaderScrollContent {
   overflow-x: hidden;
 }
 
-.tableBodyScrollWrapper {
+.tableBodyScrollContent {
   overflow-x: auto;
+}
+
+.scrollWrapper {
+  position: relative;
+
+  &::before,
+  &::after,
+  .lastSticky::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+
+  &.leftShadowVisible{
+    &:not(.withStickyColumns)::before,
+    .lastSticky::after {
+      background-image: linear-gradient(to right, rgba($D10, 0.08), rgba($D80, 0));
+      left: 0;
+      opacity: 1;
+    }
+
+    .lastSticky::after {
+      left: auto;
+      right: -30px;
+    }
+  }
+
+  &.rightShadowVisible::after {
+    background-image: linear-gradient(to left, $D10-10, rgba($D80, 0));
+    right: 0;
+    opacity: 1;
+  }
 }

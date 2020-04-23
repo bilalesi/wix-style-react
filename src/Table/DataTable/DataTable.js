@@ -43,15 +43,29 @@ const getStickyColumnStyle = (columns, column) => {
 };
 
 export const DataTableHeader = props => {
-  const { dataHook, enableScrollSync } = props;
+  const {
+    dataHook,
+    onUpdateScrollShadows,
+    leftShadowVisible,
+    rightShadowVisible,
+    stickyColumns,
+  } = props;
   return (
-    <ScrollSyncPane enabled={!!enableScrollSync}>
-      <div data-hook={dataHook} className={styles.tableHeaderScrollWrapper}>
-        <table style={{ width: props.width }} className={styles.table}>
-          <TableHeader {...props} />
-        </table>
-      </div>
-    </ScrollSyncPane>
+    <div
+      className={classNames(styles.scrollWrapper, {
+        [styles.leftShadowVisible]: !!leftShadowVisible,
+        [styles.rightShadowVisible]: !!rightShadowVisible,
+        [styles.withStickyColumns]: !!stickyColumns,
+      })}
+    >
+      <ScrollSyncPane enabled={!!onUpdateScrollShadows}>
+        <div data-hook={dataHook} className={styles.tableHeaderScrollContent}>
+          <table style={{ width: props.width }} className={styles.table}>
+            <TableHeader {...props} />
+          </table>
+        </div>
+      </ScrollSyncPane>
+    </div>
   );
 };
 
@@ -90,6 +104,20 @@ class DataTable extends React.Component {
       }
     }
   }
+
+  _handleScroll = event => {
+    const { onUpdateScrollShadows } = this.props;
+    if (!onUpdateScrollShadows) {
+      return;
+    }
+
+    const { scrollLeft, scrollWidth, clientWidth } = event.target;
+
+    const leftShadowVisible = scrollLeft > 0;
+    const rightShadowVisible = scrollWidth - scrollLeft > clientWidth;
+
+    onUpdateScrollShadows(leftShadowVisible, rightShadowVisible);
+  };
 
   createInitialScrollingState(props) {
     return { currentPage: 0, lastPage: this.calcLastPage(props) };
@@ -142,23 +170,42 @@ class DataTable extends React.Component {
   };
 
   renderTable = rowsToRender => {
-    const { dataHook, enableScrollSync } = this.props;
+    const {
+      dataHook,
+      onUpdateScrollShadows,
+      showLastRowDivider,
+      leftShadowVisible,
+      rightShadowVisible,
+      stickyColumns,
+    } = this.props;
     const style = { width: this.props.width };
     return (
-      <ScrollSyncPane enabled={!!enableScrollSync}>
-        <div data-hook={dataHook} className={styles.tableBodyScrollWrapper}>
-          <table
-            id={this.props.id}
-            style={style}
-            className={classNames(this.style.table, {
-              [this.style.showLastRowDivider]: this.props.showLastRowDivider,
-            })}
+      <div
+        className={classNames(this.style.scrollWrapper, {
+          [this.style.leftShadowVisible]: !!leftShadowVisible,
+          [this.style.rightShadowVisible]: !!rightShadowVisible,
+          [this.style.withStickyColumns]: !!stickyColumns,
+        })}
+      >
+        <ScrollSyncPane enabled={!!onUpdateScrollShadows}>
+          <div
+            data-hook={dataHook}
+            className={styles.tableBodyScrollContent}
+            onScroll={this._handleScroll}
           >
-            {!this.props.hideHeader && <TableHeader {...this.props} />}
-            {this.renderBody(rowsToRender)}
-          </table>
-        </div>
-      </ScrollSyncPane>
+            <table
+              id={this.props.id}
+              style={style}
+              className={classNames(this.style.table, {
+                [this.style.showLastRowDivider]: showLastRowDivider,
+              })}
+            >
+              {!this.props.hideHeader && <TableHeader {...this.props} />}
+              {this.renderBody(rowsToRender)}
+            </table>
+          </div>
+        </ScrollSyncPane>
+      </div>
     );
   };
 
@@ -298,6 +345,7 @@ class DataTable extends React.Component {
       [this.style.alignCenter]: column.align === 'center',
       [this.style.alignEnd]: column.align === 'end',
       [this.style.sticky]: colNum < stickyColumns,
+      [this.style.lastSticky]: colNum === stickyColumns - 1,
     });
 
     const width = this.props.hideHeader ? column.width : undefined;
@@ -420,6 +468,8 @@ class TableHeader extends Component {
     thBoxShadow: PropTypes.string,
     columns: PropTypes.array,
     skin: PropTypes.oneOf(['standard', 'neutral']),
+    leftShadowVisible: PropTypes.bool,
+    rightShadowVisible: PropTypes.bool,
   };
 
   get style() {
@@ -496,6 +546,7 @@ class TableHeader extends Component {
             !this.props.skin || this.props.skin === 'standard',
           [this.style.thSkinNeutral]: this.props.skin === 'neutral',
           [this.style.sticky]: colNum < stickyColumns,
+          [this.style.lastSticky]: colNum === stickyColumns - 1,
         })}
         {...optionalHeaderCellProps}
       >
@@ -670,6 +721,10 @@ DataTable.propTypes = {
   onSortClick: PropTypes.func,
   /** Number of columns to sticky from the left. */
   stickyColumns: PropTypes.number,
+
+  leftShadowVisible: PropTypes.bool,
+  rightShadowVisible: PropTypes.bool,
+  onUpdateScrollShadows: PropTypes.func,
 };
 DataTable.displayName = 'DataTable';
 
