@@ -4,12 +4,9 @@ import PropTypes from 'prop-types';
 import Text from '../Text';
 import styles from './TimelineItem.st.css';
 import { dataHooks } from './constants';
-import Timeline from './Timeline';
 
 /** A timeline item is a display of a timeline event */
 class TimelineItem extends React.PureComponent {
-  state = {};
-
   _isString = a => typeof a === 'string';
 
   render() {

@@ -254,6 +254,8 @@ import { ThumbnailUniDriver } from '../src/Thumbnail/Thumbnail.uni.driver';
 export const thumbnailTestkitFactory: VanillaUniTestkitFactory<ThumbnailUniDriver>;
 import { TimeInputDriver } from '../src/TimeInput/TimeInput.driver';
 export const timeInputTestkitFactory: VanillaTestkitFactory<TimeInputDriver>;
+import { TimelineUniDriver } from '../src/Timeline/Timeline.uni.driver';
+export const timelineTestkitFactory: VanillaUniTestkitFactory<TimelineUniDriver>;
 import { TimeTableUniDriver } from '../src/TimeTable/TimeTable.uni.driver';
 export const timeTableTestkitFactory: VanillaUniTestkitFactory<TimeTableUniDriver>;
 import { ToggleButtonUniDriver } from '../src/ToggleButton/ToggleButton.uni.driver';
@@ -268,8 +270,6 @@ import { VerticalTabsUniDriver } from '../src/VerticalTabs/VerticalTabs.uni.driv
 export const verticalTabsTestkitFactory: VanillaUniTestkitFactory<VerticalTabsUniDriver>;
 import { VerticalTabsItemUniDriver } from '../src/VerticalTabsItem/VerticalTabsItem.uni.driver';
 export const verticalTabsItemTestkitFactory: VanillaUniTestkitFactory<VerticalTabsItemUniDriver>;
-import { TimelineUniDriver } from '../src/Timeline/Timeline.uni.driver';
-export const timelineTestkitFactory: VanillaUniTestkitFactory<TimelineUniDriver>;
 import { HeaderDriver } from '../src/Card/Header/Header.driver';
 export const headerTestkitFactory: VanillaTestkitFactory<HeaderDriver>;
 import { EditableRowDriver } from '../src/EditableSelector/EditableRow/EditableRow.driver';

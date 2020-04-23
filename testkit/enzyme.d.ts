@@ -255,6 +255,8 @@ import {ThumbnailUniDriver} from '../src/Thumbnail/Thumbnail.uni.driver';
 export const thumbnailTestkitFactory: EnzymeUniTestkitFactory<ThumbnailUniDriver>;
 import {TimeInputDriver} from '../src/TimeInput/TimeInput.driver';
 export const timeInputTestkitFactory: EnzymeTestkitFactory<TimeInputDriver>;
+import {TimelineUniDriver} from '../src/Timeline/Timeline.uni.driver';
+export const timelineTestkitFactory: EnzymeUniTestkitFactory<TimelineUniDriver>;
 import {TimeTableUniDriver} from '../src/TimeTable/TimeTable.uni.driver';
 export const timeTableTestkitFactory: EnzymeUniTestkitFactory<TimeTableUniDriver>;
 import {ToggleButtonUniDriver} from '../src/ToggleButton/ToggleButton.uni.driver';
@@ -269,8 +271,6 @@ import {VerticalTabsUniDriver} from '../src/VerticalTabs/VerticalTabs.uni.driver
 export const verticalTabsTestkitFactory: EnzymeUniTestkitFactory<VerticalTabsUniDriver>;
 import {VerticalTabsItemUniDriver} from '../src/VerticalTabsItem/VerticalTabsItem.uni.driver';
 export const verticalTabsItemTestkitFactory: EnzymeUniTestkitFactory<VerticalTabsItemUniDriver>;
-import {TimelineUniDriver} from '../src/Timeline/Timeline.uni.driver';
-export const timelineTestkitFactory: EnzymeUniTestkitFactory<TimelineUniDriver>;
 import {HeaderDriver} from '../src/Card/Header/Header.driver';
 export const headerTestkitFactory: EnzymeTestkitFactory<HeaderDriver>;
 import {EditableRowDriver} from '../src/EditableSelector/EditableRow/EditableRow.driver';

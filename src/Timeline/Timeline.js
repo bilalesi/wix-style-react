@@ -7,8 +7,6 @@ import TimelineItem from './TimelineItem';
 
 /** A timeline is a display of a list of events */
 class Timeline extends React.PureComponent {
-  state = {};
-
   render() {
     const { dataHook, items } = this.props;
 
