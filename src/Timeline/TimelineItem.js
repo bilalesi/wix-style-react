@@ -10,13 +10,10 @@ const _isString = a => typeof a === 'string';
 /** A timeline item is a display of a timeline event */
 class TimelineItem extends React.PureComponent {
   render() {
-    const { idx, item } = this.props;
+    const { idx, item, dataHook } = this.props;
 
     return (
-      <li
-        className={styles.event}
-        data-hook={`${dataHooks.timelineListEvent}-${idx}`}
-      >
+      <li className={styles.event} data-hook={dataHook}>
         <div className={styles.prefix}>
           {item.customPrefix ? (
             <div
@@ -77,6 +74,8 @@ class TimelineItem extends React.PureComponent {
 TimelineItem.displayName = 'TimelineItem';
 
 TimelineItem.propTypes = {
+  /** Applied as data-hook HTML attribute that can be used in the tests */
+  dataHook: PropTypes.string,
   /** timeline event item index*/
   idx: PropTypes.number,
   /** timeline event item */
