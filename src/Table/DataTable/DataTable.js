@@ -81,6 +81,24 @@ class DataTable extends React.Component {
       state = { ...state, ...this.createInitialScrollingState(props) };
     }
     this.state = state;
+    this.contentRef = React.createRef();
+    if ('ResizeObserver' in window) {
+      this.contentResizeObserver = new ResizeObserver(
+        this._updateScrollShadows,
+      );
+    }
+  }
+
+  componentDidMount() {
+    const { contentResizeObserver } = this;
+    contentResizeObserver &&
+      contentResizeObserver.observe(this.contentRef.current);
+  }
+
+  componentWillUnmount() {
+    const { contentResizeObserver } = this;
+    contentResizeObserver &&
+      contentResizeObserver.unobserve(this.contentRef.current);
   }
 
   get style() {
@@ -105,14 +123,13 @@ class DataTable extends React.Component {
     }
   }
 
-  _handleScroll = event => {
+  _updateScrollShadows = () => {
     const { onUpdateScrollShadows } = this.props;
     if (!onUpdateScrollShadows) {
       return;
     }
 
-    const { scrollLeft, scrollWidth, clientWidth } = event.target;
-
+    const { scrollLeft, scrollWidth, clientWidth } = this.contentRef.current;
     const leftShadowVisible = scrollLeft > 0;
     const rightShadowVisible = scrollWidth - scrollLeft > clientWidth;
 
@@ -191,7 +208,8 @@ class DataTable extends React.Component {
           <div
             data-hook={dataHook}
             className={styles.tableBodyScrollContent}
-            onScroll={this._handleScroll}
+            ref={this.contentRef}
+            onScroll={this._updateScrollShadows}
           >
             <table
               id={this.props.id}
