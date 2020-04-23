@@ -43,9 +43,9 @@ const getStickyColumnStyle = (columns, column) => {
 };
 
 export const DataTableHeader = props => {
-  const { dataHook } = props;
+  const { dataHook, enableScrollSync } = props;
   return (
-    <ScrollSyncPane>
+    <ScrollSyncPane enabled={!!enableScrollSync}>
       <div data-hook={dataHook} className={styles.tableHeaderScrollWrapper}>
         <table style={{ width: props.width }} className={styles.table}>
           <TableHeader {...props} />
@@ -142,10 +142,10 @@ class DataTable extends React.Component {
   };
 
   renderTable = rowsToRender => {
-    const { dataHook } = this.props;
+    const { dataHook, enableScrollSync } = this.props;
     const style = { width: this.props.width };
     return (
-      <ScrollSyncPane>
+      <ScrollSyncPane enabled={!!enableScrollSync}>
         <div data-hook={dataHook} className={styles.tableBodyScrollWrapper}>
           <table
             id={this.props.id}

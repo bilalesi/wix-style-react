@@ -77,6 +77,7 @@ export function getDataTableProps(tableProps) {
   return {
     ...props,
     rowClass: classNames(tableProps.rowClass, style.tableRow),
+    enableScrollSync: true,
   };
 }
 
