@@ -405,7 +405,6 @@ const tests = [
           const driver = createDriver();
           driver.scrollHorizontallyBy(200);
           driver.clickRowCheckbox(1);
-          driver.clickRowCheckbox(1);
         },
       },
       {
