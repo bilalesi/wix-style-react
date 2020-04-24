@@ -158,7 +158,7 @@ export default {
             {
               title: 'Table with Sticky Columns and Horizontal Scroll',
               description:
-                'Horizontal scroll will be enabled automatically when table columns are fixed using `width` prop and combined column size exceeds available table size. In addition, you can "sticky" a number of columns from the left using `stickyColumns` prop. Sticky columns will remain and will not scroll with the rest of table columns.',
+                'Horizontal scroll can be enabled by providing `horizontalScroll` prop and defining `width` prop for all table columns. Combined column size should exceed available table size. In addition, you can "sticky" a number of columns from the left using `stickyColumns` prop. Sticky columns will remain and will not scroll with the rest of table columns.',
               source: TableStickyScrollExampleRaw,
               compact: true,
             },

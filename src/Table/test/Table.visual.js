@@ -344,6 +344,7 @@ const tests = [
       {
         it: 'Should display the table with horizontal scroll',
         props: {
+          horizontalScroll: true,
           data: horizontalScrollData,
           columns: horizontalScrollColumns,
         },
@@ -351,6 +352,7 @@ const tests = [
       {
         it: 'Should show left shadow on scroll',
         props: {
+          horizontalScroll: true,
           data: horizontalScrollData,
           columns: horizontalScrollColumns,
         },
@@ -361,6 +363,7 @@ const tests = [
       {
         it: 'Should hide right shadow on end of scroll',
         props: {
+          horizontalScroll: true,
           data: horizontalScrollData,
           columns: horizontalScrollColumns,
         },
@@ -371,6 +374,7 @@ const tests = [
       {
         it: 'Should sticky first bulk selection column',
         props: {
+          horizontalScroll: true,
           showSelection: true,
           stickyColumns: 1,
           data: horizontalScrollData,
@@ -383,6 +387,7 @@ const tests = [
       {
         it: 'Should sticky first two columns',
         props: {
+          horizontalScroll: true,
           showSelection: true,
           stickyColumns: 2,
           data: horizontalScrollData,
@@ -395,6 +400,7 @@ const tests = [
       {
         it: 'Should support selection and highlight with sticky columns',
         props: {
+          horizontalScroll: true,
           showSelection: true,
           stickyColumns: 2,
           data: horizontalScrollData,
@@ -409,8 +415,9 @@ const tests = [
       },
       {
         it:
-          'Should sticky first two columns when table content and titlebar is rendered separately',
+          'Should sticky columns when table content and titlebar are rendered separately',
         props: {
+          horizontalScroll: true,
           stickyColumns: 2,
           data: horizontalScrollData,
           columns: horizontalScrollColumns,

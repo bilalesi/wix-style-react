@@ -19,6 +19,7 @@ class TableStickyScrollExample extends React.Component {
   render() {
     return (
       <Table
+        horizontalScroll
         stickyColumns={2}
         showSelection
         data={this.data}

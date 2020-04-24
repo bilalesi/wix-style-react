@@ -195,6 +195,7 @@ Table.defaultProps = {
   children: [<Table.Content key="content" />],
   withWrapper: true,
   showLastRowDivider: false,
+  horizontalScroll: false,
   stickyColumns: 0,
 };
 
@@ -339,7 +340,9 @@ Table.propTypes = {
   width: PropTypes.string,
   /** Table styling. Supports `standard` and `neutral`. */
   skin: PropTypes.oneOf(['standard', 'neutral']),
-  /** Number of columns to sticky from the left. */
+  /** Enable horizontal scroll. */
+  horizontalScroll: PropTypes.bool,
+  /** Number of columns to sticky from the left (should be used with horizontal scroll). */
   stickyColumns: PropTypes.number,
 };
 

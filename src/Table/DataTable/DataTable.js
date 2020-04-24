@@ -18,12 +18,13 @@ import { virtualRowsAreEqual, getStickyColumnStyle } from './DataTable.utils';
 export const DataTableHeader = props => {
   const {
     dataHook,
-    onUpdateScrollShadows,
+    horizontalScroll,
     leftShadowVisible,
     rightShadowVisible,
     stickyColumns,
   } = props;
-  return (
+
+  const wrapWithHorizontalScroll = table => (
     <div
       className={classNames(styles.scrollWrapper, {
         [styles.leftShadowVisible]: !!leftShadowVisible,
@@ -31,15 +32,24 @@ export const DataTableHeader = props => {
         [styles.withStickyColumns]: !!stickyColumns,
       })}
     >
-      <ScrollSyncPane enabled={!!onUpdateScrollShadows}>
-        <div data-hook={dataHook} className={styles.tableHeaderScrollContent}>
-          <table style={{ width: props.width }} className={styles.table}>
-            <TableHeader {...props} />
-          </table>
-        </div>
-      </ScrollSyncPane>
+      <ScrollSyncPane>{table}</ScrollSyncPane>
     </div>
   );
+
+  const table = (
+    <div
+      data-hook={dataHook}
+      className={classNames({
+        [styles.tableHeaderScrollContent]: horizontalScroll,
+      })}
+    >
+      <table style={{ width: props.width }} className={styles.table}>
+        <TableHeader {...props} />
+      </table>
+    </div>
+  );
+
+  return horizontalScroll ? wrapWithHorizontalScroll(table) : table;
 };
 
 DataTableHeader.propTypes = {
@@ -55,7 +65,7 @@ class DataTable extends React.Component {
     }
     this.state = state;
     this.contentRef = React.createRef();
-    if ('ResizeObserver' in window) {
+    if (props.horizontalScroll && 'ResizeObserver' in window) {
       this.contentResizeObserver = new ResizeObserver(
         this._updateScrollShadows,
       );
@@ -120,6 +130,7 @@ class DataTable extends React.Component {
       virtualized,
       data,
       showHeaderWhenEmpty,
+      horizontalScroll,
       infiniteScroll,
       itemsPerPage,
     } = this.props;
@@ -136,9 +147,12 @@ class DataTable extends React.Component {
       ? data.slice(0, (this.state.currentPage + 1) * itemsPerPage)
       : data;
 
-    const table = this.renderTable(rowsToRender);
+    let table = this.renderTable(rowsToRender);
+    if (horizontalScroll) {
+      table = this.wrapWithHorizontalScroll(table);
+    }
     if (infiniteScroll) {
-      return this.wrapWithInfiniteScroll(table);
+      table = this.wrapWithInfiniteScroll(table);
     }
 
     return table;
@@ -161,16 +175,8 @@ class DataTable extends React.Component {
     );
   };
 
-  renderTable = rowsToRender => {
-    const {
-      dataHook,
-      onUpdateScrollShadows,
-      showLastRowDivider,
-      leftShadowVisible,
-      rightShadowVisible,
-      stickyColumns,
-    } = this.props;
-    const style = { width: this.props.width };
+  wrapWithHorizontalScroll = table => {
+    const { leftShadowVisible, rightShadowVisible, stickyColumns } = this.props;
     return (
       <div
         className={classNames(this.style.scrollWrapper, {
@@ -179,25 +185,35 @@ class DataTable extends React.Component {
           [this.style.withStickyColumns]: !!stickyColumns,
         })}
       >
-        <ScrollSyncPane enabled={!!onUpdateScrollShadows}>
-          <div
-            data-hook={dataHook}
-            className={styles.tableBodyScrollContent}
-            ref={this.contentRef}
-            onScroll={this._updateScrollShadows}
-          >
-            <table
-              id={this.props.id}
-              style={style}
-              className={classNames(this.style.table, {
-                [this.style.showLastRowDivider]: showLastRowDivider,
-              })}
-            >
-              {!this.props.hideHeader && <TableHeader {...this.props} />}
-              {this.renderBody(rowsToRender)}
-            </table>
-          </div>
-        </ScrollSyncPane>
+        <ScrollSyncPane>{table}</ScrollSyncPane>
+      </div>
+    );
+  };
+
+  renderTable = rowsToRender => {
+    const { dataHook, showLastRowDivider, horizontalScroll } = this.props;
+    const style = { width: this.props.width };
+    return (
+      <div
+        data-hook={dataHook}
+        {...(horizontalScroll
+          ? {
+              className: styles.tableBodyScrollContent,
+              ref: this.contentRef,
+              onScroll: this._updateScrollShadows,
+            }
+          : undefined)}
+      >
+        <table
+          id={this.props.id}
+          style={style}
+          className={classNames(this.style.table, {
+            [this.style.showLastRowDivider]: showLastRowDivider,
+          })}
+        >
+          {!this.props.hideHeader && <TableHeader {...this.props} />}
+          {this.renderBody(rowsToRender)}
+        </table>
       </div>
     );
   };
@@ -603,6 +619,7 @@ DataTable.defaultProps = {
   showLastRowDivider: true,
   virtualizedLineHeight: 60,
   skin: 'standard',
+  horizontalScroll: false,
   stickyColumns: 0,
 };
 
@@ -715,9 +732,10 @@ DataTable.propTypes = {
   ),
   /** A callback function called on each column title click. Signature `onSortClick(colData, colNum)` */
   onSortClick: PropTypes.func,
-  /** Number of columns to sticky from the left. */
-  stickyColumns: PropTypes.number,
 
+  /* Horizontal scroll support props. */
+  horizontalScroll: PropTypes.bool,
+  stickyColumns: PropTypes.number,
   leftShadowVisible: PropTypes.bool,
   rightShadowVisible: PropTypes.bool,
   onUpdateScrollShadows: PropTypes.func,
