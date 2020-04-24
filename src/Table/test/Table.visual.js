@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
+import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 
 import Table from '..';
+import { tablePrivateDriverFactory } from '../Table.private.driver';
 import Card from '../../Card';
 import Checkbox from '../../Checkbox';
 import ToggleSwitch from '../../ToggleSwitch';
+import range from '../../utils/operators/range';
+import { storySettings } from '../docs/storySettings';
 import {
   ToolbarExample,
   ToolbarWithBulSelectionCheckboxExample,
   EmptyStateExample,
 } from './testExamples';
+
+const { dataHook } = storySettings;
 
 const data = [
   {
@@ -60,6 +66,44 @@ const columns = [
     minWidth: '100px',
   },
 ];
+
+const tablePrivateTestkitFactory = testkitFactoryCreator(
+  tablePrivateDriverFactory,
+);
+const createDriver = () =>
+  tablePrivateTestkitFactory({
+    wrapper: document.body,
+    dataHook,
+  });
+
+const getHorizontalScrollColumnContent = (columnIndex, rowIndex) =>
+  columnIndex === 1 && rowIndex === 2
+    ? 'A very long column text that should span multiple lines and grow the row height.'
+    : `Value ${columnIndex + 1}-${rowIndex + 1}`;
+const horizontalScrollColumnCount = 20;
+const horizontalScrollRowCount = 4;
+const horizontalScrollData = range(0, horizontalScrollRowCount).map(rowIndex =>
+  range(0, horizontalScrollColumnCount).reduce(
+    (rows, columnIndex) => ({
+      ...rows,
+      [`value${columnIndex + 1}`]: getHorizontalScrollColumnContent(
+        columnIndex,
+        rowIndex,
+      ),
+    }),
+    {},
+  ),
+);
+const horizontalScrollColumns = range(0, horizontalScrollColumnCount).map(
+  columnIndex => ({
+    title: `Column ${columnIndex + 1}`,
+    render: row => row[`value${columnIndex + 1}`],
+    width: 150,
+    infoTooltipProps: {
+      content: 'Tooltip!',
+    },
+  }),
+);
 
 const tests = [
   {
@@ -294,14 +338,114 @@ const tests = [
       },
     ],
   },
+  {
+    describe: 'Sticky and Horizontal Scroll',
+    its: [
+      {
+        it: 'Should display the table with horizontal scroll',
+        props: {
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+        },
+      },
+      {
+        it: 'Should show left shadow on scroll',
+        props: {
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+        },
+        componentDidMount: () => {
+          createDriver().scrollHorizontallyBy(250);
+        },
+      },
+      {
+        it: 'Should hide right shadow on end of scroll',
+        props: {
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+        },
+        componentDidMount: () => {
+          createDriver().scrollHorizontallyBy(99999);
+        },
+      },
+      {
+        it: 'Should sticky first bulk selection column',
+        props: {
+          showSelection: true,
+          stickyColumns: 1,
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+        },
+        componentDidMount: () => {
+          createDriver().scrollHorizontallyBy(200);
+        },
+      },
+      {
+        it: 'Should sticky first two columns',
+        props: {
+          showSelection: true,
+          stickyColumns: 2,
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+        },
+        componentDidMount: () => {
+          createDriver().scrollHorizontallyBy(200);
+        },
+      },
+      {
+        it: 'Should support selection and highlight with sticky columns',
+        props: {
+          showSelection: true,
+          stickyColumns: 2,
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+          isRowHighlight: (_, rowNum) => rowNum % 2 === 0,
+        },
+        componentDidMount: () => {
+          const driver = createDriver();
+          driver.scrollHorizontallyBy(200);
+          driver.clickRowCheckbox(1);
+          driver.clickRowCheckbox(1);
+        },
+      },
+      {
+        it:
+          'Should sticky first two columns when table content and titlebar is rendered separately',
+        props: {
+          stickyColumns: 2,
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns,
+          children: [
+            <Table.Titlebar key="titlebar" />,
+            <Table.Content key="content" titleBarVisible={false} />,
+          ],
+        },
+        componentDidMount: () => {
+          createDriver().scrollHorizontallyBy(200);
+        },
+      },
+    ],
+  },
 ];
 
+const InteractiveTable = ({ componentDidMount, ...props }) => {
+  useEffect(() => {
+    componentDidMount && componentDidMount();
+  }, [componentDidMount]);
+
+  return <Table {...props} />;
+};
+
 tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
+  its.forEach(({ it, props, componentDidMount }) => {
     storiesOf(`Table${describe ? '/' + describe : ''}`, module).add(it, () => (
       <div style={{ backgroundColor: '#DFE5EB', padding: '20px' }}>
         <Card>
-          <Table {...props} />
+          <InteractiveTable
+            dataHook={dataHook}
+            {...props}
+            componentDidMount={componentDidMount}
+          />
         </Card>
       </div>
     ));
