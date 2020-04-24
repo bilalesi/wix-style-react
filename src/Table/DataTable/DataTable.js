@@ -63,15 +63,17 @@ class DataTable extends React.Component {
   }
 
   componentDidMount() {
-    const { contentResizeObserver } = this;
-    contentResizeObserver &&
-      contentResizeObserver.observe(this.contentRef.current);
+    const { contentResizeObserver, contentRef } = this;
+    if (contentResizeObserver && contentRef.current) {
+      contentResizeObserver.observe(contentRef.current);
+    }
   }
 
   componentWillUnmount() {
-    const { contentResizeObserver } = this;
-    contentResizeObserver &&
-      contentResizeObserver.unobserve(this.contentRef.current);
+    const { contentResizeObserver, contentRef } = this;
+    if (contentResizeObserver && contentRef.current) {
+      contentResizeObserver.unobserve(contentRef.current);
+    }
   }
 
   get style() {
