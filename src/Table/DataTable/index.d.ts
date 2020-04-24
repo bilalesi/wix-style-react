@@ -36,6 +36,7 @@ export interface DataTableProps<RowData = RowDataDefaultType> {
   virtualizedLineHeight?: number;
   virtualizedListRef?: React.LegacyRef<any>;
   selectedRowsIds?: (string | number)[];
+  horizontalScroll?: boolean;
   stickyColumns?: number;
 }
 

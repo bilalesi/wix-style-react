@@ -89,5 +89,6 @@ export type UsedDataTableProps<RowData = RowDataDefaultType> = Pick<
   | 'width'
   | 'skin'
   | 'data'
+  | 'horizontalScroll'
   | 'stickyColumns'
 >;
