@@ -1,10 +1,5 @@
 import * as React from 'react';
-import DateInput from '..';
-import { dateInputTestkitFactory } from '../../../testkit';
-import { dateInputTestkitFactory as dateInputEnzymeTestkitFactory } from '../../../testkit/enzyme';
-import { dateInputTestkitFactory as dateInputPuppeteerTestkitFactory } from '../../../testkit/puppeteer';
-import * as enzyme from 'enzyme';
-import * as puppeteer from 'puppeteer';
+import DateInput from '../index';
 
 function DateInputWithMandatoryProps() {
   return <DateInput />;
@@ -70,23 +65,4 @@ function DateInputWithAllProps() {
       withSelection
     />
   );
-}
-
-async function testkits() {
-  const testkit = dateInputTestkitFactory({
-    dataHook: 'hook',
-    wrapper: document.createElement('div'),
-  });
-
-  const enzymeTestkit = dateInputEnzymeTestkitFactory({
-    dataHook: 'hook',
-    wrapper: enzyme.mount(<div />),
-  });
-
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  const puppeteerTestkit = await dateInputPuppeteerTestkitFactory({
-    dataHook: 'hook',
-    page,
-  });
 }

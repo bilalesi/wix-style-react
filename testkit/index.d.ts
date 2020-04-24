@@ -60,10 +60,10 @@ import { CardGalleryItemUniDriver } from '../src/CardGalleryItem/CardGalleryItem
 export const cardGalleryItemTestkitFactory: VanillaUniTestkitFactory<CardGalleryItemUniDriver>;
 import { CarouselDriver } from '../src/Carousel/Carousel.driver';
 export const carouselTestkitFactory: VanillaTestkitFactory<CarouselDriver>;
-import { CheckboxDriver } from '../src/Checkbox/Checkbox.driver';
-export const checkboxTestkitFactory: VanillaTestkitFactory<CheckboxDriver>;
 import { CheckToggleUniDriver } from '../src/CheckToggle/CheckToggle.uni.driver';
 export const checkToggleTestkitFactory: VanillaUniTestkitFactory<CheckToggleUniDriver>;
+import { CheckboxDriver } from '../src/Checkbox/Checkbox.driver';
+export const checkboxTestkitFactory: VanillaTestkitFactory<CheckboxDriver>;
 import { CircularProgressBarDriver } from '../src/CircularProgressBar/CircularProgressBar.driver';
 export const circularProgressBarTestkitFactory: VanillaTestkitFactory<CircularProgressBarDriver>;
 import { CloseButtonUniDriver } from '../src/CloseButton/CloseButton.uni.driver';
@@ -80,8 +80,6 @@ import { CounterBadgeUniDriver } from '../src/CounterBadge/CounterBadge.uni.driv
 export const counterBadgeTestkitFactory: VanillaUniTestkitFactory<CounterBadgeUniDriver>;
 import { CustomModalLayoutUniDriver } from '../src/CustomModalLayout/CustomModalLayout.uni.driver';
 export const customModalLayoutTestkitFactory: VanillaUniTestkitFactory<CustomModalLayoutUniDriver>;
-import { DateInputUniDriver } from '../src/DateInput/DateInput.uni.driver';
-export const dateInputTestkitFactory: VanillaUniTestkitFactory<DateInputUniDriver>;
 import { DatePickerDriver } from '../src/DatePicker/DatePicker.driver';
 export const datePickerTestkitFactory: VanillaTestkitFactory<DatePickerDriver>;
 import { DividerUniDriver } from '../src/Divider/Divider.uni.driver';
@@ -142,6 +140,8 @@ import { LinearProgressBarDriver } from '../src/LinearProgressBar/LinearProgress
 export const linearProgressBarTestkitFactory: VanillaTestkitFactory<LinearProgressBarDriver>;
 import { ListItemActionUniDriver } from '../src/ListItemAction/ListItemAction.uni.driver';
 export const listItemActionTestkitFactory: VanillaUniTestkitFactory<ListItemActionUniDriver>;
+import { ListItemEditableUniDriver } from '../src/ListItemEditable/ListItemEditable.uni.driver';
+export const listItemEditableTestkitFactory: VanillaUniTestkitFactory<ListItemEditableUniDriver>;
 import { ListItemSectionUniDriver } from '../src/ListItemSection/ListItemSection.uni.driver';
 export const listItemSectionTestkitFactory: VanillaUniTestkitFactory<ListItemSectionUniDriver>;
 import { ListItemSelectUniDriver } from '../src/ListItemSelect/ListItemSelect.uni.driver';

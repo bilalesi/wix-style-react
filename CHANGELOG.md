@@ -15,17 +15,32 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- Infra: use latest `babel-plugin-dynamic-import-node` [#5398](https://github.com/wix/wix-style-react/pull/5398)
+- `<ListItemSelect/>`- fix selected checkbox css [#5391](https://github.com/wix/wix-style-react/pull/5391)
+- `<Tooltip/>` - now works when wrapped with `<FontUpgrade/>` when appended to window [#5403](https://github.com/wix/wix-style-react/pull/5403)
+- `<Modal/>` - now works when wrapped with `<FontUpgrade/>` [#5403](https://github.com/wix/wix-style-react/pull/5403)
+
+## 8.4.0 - 2020-04-22
+
 ### Added
+- `<ListItemEditable/>` - new component [#5348](https://github.com/wix/wix-style-react/pull/5348)
 - `<Popover/>` - adding exit animation [#5363](https://github.com/wix/wix-style-react/pull/5363)
 - `<FloatingHelper/>`- adding exit animation [#5364](https://github.com/wix/wix-style-react/pull/5364)
 - `<PopoverMenu/>`&& `<DropdownBase/>`- adding exit animation to `<PopoverMenu/>` by adding `animate` prop to `<DropdownBase/>` [#5365](https://github.com/wix/wix-style-react/pull/5365)
-- Design story - 1.1 Colors [#5187](https://github.com/wix/wix-style-react/pull/5187)
+- `<Tooltip/>`- adding exit animation [#5368](https://github.com/wix/wix-style-react/pull/5368)
+- `<Avatar>` - add loading state [#5369](https://github.com/wix/wix-style-react/pull/5369)
 
 ### Fixed
+- `<AutoCompleteWithLabel/>` - fix hasError in testkit [#5370](https://github.com/wix/wix-style-react/pull/5370)
 - `<ModalSelectorLayout/>` - add ok&cancel buttons functions to driver's types [#5373](https://github.com/wix/wix-style-react/pull/5373)
+- `<PopoverMenu.MenuItem/>` - fix type for `text` prop [#5360](https://github.com/wix/wix-style-react/pull/5360)
+- `<AddItem/>` & `<FillButton/>` - Restore `tooltipContent` prop [#5371](https://github.com/wix/wix-style-react/pull/5371)
 
 ### Docs
 - `Icons` - improving icons story. [#5361](https://github.com/wix/wix-style-react/pull/5361)
+- Design story - 1.1 Colors [#5187](https://github.com/wix/wix-style-react/pull/5187)
+
 
 
 ## 8.3.0 - 2020-04-16

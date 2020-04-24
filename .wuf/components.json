@@ -68,11 +68,11 @@
   "Carousel": {
     "path": "src/Carousel"
   },
-  "Checkbox": {
-    "path": "src/Checkbox"
-  },
   "CheckToggle": {
     "path": "src/CheckToggle"
+  },
+  "Checkbox": {
+    "path": "src/Checkbox"
   },
   "CircularProgressBar": {
     "path": "src/CircularProgressBar"
@@ -103,9 +103,6 @@
   },
   "CustomModalLayout": {
     "path": "src/CustomModalLayout"
-  },
-  "DateInput": {
-    "path": "src/DateInput"
   },
   "DatePicker": {
     "path": "src/DatePicker"
@@ -220,6 +217,9 @@
   },
   "ListItemAction": {
     "path": "src/ListItemAction"
+  },
+  "ListItemEditable": {
+    "path": "src/ListItemEditable"
   },
   "ListItemSection": {
     "path": "src/ListItemSection"

@@ -3,6 +3,9 @@ import React from 'react';
 import { Tooltip as CoreTooltip } from 'wix-ui-core/dist/src/components/tooltip';
 import Text from '../Text';
 import styles from './Tooltip.st.css';
+import { dataHooks, TIMEOUT } from './constants';
+import { FontUpgradeContext } from '../FontUpgrade/context';
+import FontUpgrade from '../FontUpgrade';
 
 /**
  * Next Tooltip
@@ -79,15 +82,28 @@ class Tooltip extends React.PureComponent {
     const { content, textAlign, size } = this.props;
     const textSize = size === 'small' ? 'tiny' : 'small';
     return (
-      <div style={{ textAlign }}>
-        {typeof content === 'string' ? (
-          <Text dataHook="tooltip-text" size={textSize} weight="normal" light>
-            {content}
-          </Text>
-        ) : (
-          content
-        )}
-      </div>
+      <FontUpgradeContext.Consumer>
+        {context => {
+          return (
+            <div style={{ textAlign }}>
+              <FontUpgrade active={context.active}>
+                {typeof content === 'string' ? (
+                  <Text
+                    dataHook={dataHooks.tooltipText}
+                    size={textSize}
+                    weight="normal"
+                    light
+                  >
+                    {content}
+                  </Text>
+                ) : (
+                  content
+                )}
+              </FontUpgrade>
+            </div>
+          );
+        }}
+      </FontUpgradeContext.Consumer>
     );
   };
 
@@ -117,6 +133,7 @@ class Tooltip extends React.PureComponent {
             : disabled
         }
         showArrow
+        timeout={TIMEOUT}
       >
         {children}
       </CoreTooltip>

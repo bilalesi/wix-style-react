@@ -61,10 +61,10 @@ import {CardGalleryItemUniDriver} from '../src/CardGalleryItem/CardGalleryItem.u
 export const cardGalleryItemTestkitFactory: PuppeteerUniTestkitFactory<CardGalleryItemUniDriver>;
 import {CarouselUniDriver} from '../src/Carousel/Carousel.uni.driver';
 export const carouselTestkitFactory: PuppeteerUniTestkitFactory<CarouselUniDriver>;
-import {CheckboxUniDriver} from '../src/Checkbox/Checkbox.uni.driver';
-export const checkboxTestkitFactory: PuppeteerUniTestkitFactory<CheckboxUniDriver>;
 import {CheckToggleUniDriver} from '../src/CheckToggle/CheckToggle.uni.driver';
 export const checkToggleTestkitFactory: PuppeteerUniTestkitFactory<CheckToggleUniDriver>;
+import {CheckboxUniDriver} from '../src/Checkbox/Checkbox.uni.driver';
+export const checkboxTestkitFactory: PuppeteerUniTestkitFactory<CheckboxUniDriver>;
 import {CircularProgressBarUniDriver} from '../src/CircularProgressBar/CircularProgressBar.uni.driver';
 export const circularProgressBarTestkitFactory: PuppeteerUniTestkitFactory<CircularProgressBarUniDriver>;
 import {CloseButtonUniDriver} from '../src/CloseButton/CloseButton.uni.driver';
@@ -81,8 +81,6 @@ import {CounterBadgeUniDriver} from '../src/CounterBadge/CounterBadge.uni.driver
 export const counterBadgeTestkitFactory: PuppeteerUniTestkitFactory<CounterBadgeUniDriver>;
 import {CustomModalLayoutUniDriver} from '../src/CustomModalLayout/CustomModalLayout.uni.driver';
 export const customModalLayoutTestkitFactory: PuppeteerUniTestkitFactory<CustomModalLayoutUniDriver>;
-import {DateInputUniDriver} from '../src/DateInput/DateInput.uni.driver';
-export const dateInputTestkitFactory: PuppeteerUniTestkitFactory<DateInputUniDriver>;
 import {DividerUniDriver} from '../src/Divider/Divider.uni.driver';
 export const dividerTestkitFactory: PuppeteerUniTestkitFactory<DividerUniDriver>;
 import {DropdownUniDriver} from '../src/Dropdown/Dropdown.uni.driver';
@@ -139,6 +137,8 @@ import {LinearProgressBarUniDriver} from '../src/LinearProgressBar/LinearProgres
 export const linearProgressBarTestkitFactory: PuppeteerUniTestkitFactory<LinearProgressBarUniDriver>;
 import {ListItemActionUniDriver} from '../src/ListItemAction/ListItemAction.uni.driver';
 export const ListItemActionTestkitFactory: PuppeteerUniTestkitFactory<ListItemActionUniDriver>;
+import {ListItemEditableUniDriver} from '../src/ListItemEditable/ListItemEditable.uni.driver';
+export const listItemEditableTestkitFactory: PuppeteerUniTestkitFactory<ListItemEditableUniDriver>;
 import {ListItemSectionUniDriver} from '../src/ListItemSection/ListItemSection.uni.driver';
 export const listItemSectionTestkitFactory: PuppeteerUniTestkitFactory<ListItemSectionUniDriver>;
 import {ListItemSelectUniDriver} from '../src/ListItemSelect/ListItemSelect.uni.driver';
