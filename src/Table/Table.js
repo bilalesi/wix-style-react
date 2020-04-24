@@ -139,6 +139,7 @@ export class Table extends React.Component {
       totalSelectableCount,
       onSelectionChanged,
       hasMore,
+      horizontalScroll,
     } = this.props;
     let hasUnselectables = null;
     let allIds = data.map((rowData, rowIndex) =>
@@ -159,29 +160,35 @@ export class Table extends React.Component {
       onUpdateScrollShadows: this._handleUpdateScrollShadows,
     };
 
-    return (
+    const table = (
+      <TableContext.Provider value={contextValue}>
+        {showSelection ? (
+          <BulkSelection
+            ref={_ref => (this.bulkSelection = _ref)}
+            selectedIds={selectedIds}
+            deselectRowsByDefault={deselectRowsByDefault}
+            disabled={selectionDisabled}
+            hasMoreInBulkSelection={
+              infiniteScroll && Boolean(totalSelectableCount) && hasMore
+            }
+            totalCount={totalSelectableCount}
+            allIds={allIds}
+            onSelectionChanged={onSelectionChanged}
+          >
+            {this.renderChildren()}
+          </BulkSelection>
+        ) : (
+          this.renderChildren()
+        )}
+      </TableContext.Provider>
+    );
+
+    return horizontalScroll ? (
       <ScrollSync proportional={false} horizontal vertical={false}>
-        <TableContext.Provider value={contextValue}>
-          {showSelection ? (
-            <BulkSelection
-              ref={_ref => (this.bulkSelection = _ref)}
-              selectedIds={selectedIds}
-              deselectRowsByDefault={deselectRowsByDefault}
-              disabled={selectionDisabled}
-              hasMoreInBulkSelection={
-                infiniteScroll && Boolean(totalSelectableCount) && hasMore
-              }
-              totalCount={totalSelectableCount}
-              allIds={allIds}
-              onSelectionChanged={onSelectionChanged}
-            >
-              {this.renderChildren()}
-            </BulkSelection>
-          ) : (
-            this.renderChildren()
-          )}
-        </TableContext.Provider>
+        {table}
       </ScrollSync>
+    ) : (
+      table
     );
   }
 }
