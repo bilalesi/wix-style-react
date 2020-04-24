@@ -25,3 +25,23 @@ export function virtualRowsAreEqual(prevProps, nextProps) {
     shallowEqual(prevRest, nextRest)
   );
 }
+
+const CELL_FIRST_PADDING = 30;
+const CELL_PADDING = 12;
+
+export const getStickyColumnStyle = (columns, column) => {
+  let left = 0;
+
+  for (let i = 0; i < columns.length; i++) {
+    const col = columns[i];
+    if (col === column) {
+      break;
+    }
+
+    const horizontalPadding =
+      i === 0 ? CELL_FIRST_PADDING + CELL_PADDING : 2 * CELL_PADDING;
+    left += parseInt(col.width, 10) + horizontalPadding;
+  }
+
+  return { left };
+};

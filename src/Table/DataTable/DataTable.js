@@ -13,34 +13,7 @@ import styles from './DataTable.scss';
 import InfiniteScroll from '../../utils/InfiniteScroll';
 import InfoIcon from '../../InfoIcon';
 
-import { virtualRowsAreEqual } from './DataTable.utils';
-
-const CELL_FIRST_PADDING = 30;
-const CELL_PADDING = 12;
-
-// Set CSS "left" style to support multiple sticky columns.
-// This is a very basic and ugly POC code - need to rewrite it with
-// componentDidMount/componentDidUpdate, ResizeObserver and getComputedStyle
-// to support column size set with percent values as well (and not just pixels
-// as right now).
-// Note that if we want to sticky only a single column on the left - this code
-// is not required at all, it is only necessary to support multiple sticky columns.
-const getStickyColumnStyle = (columns, column) => {
-  let left = 0;
-
-  for (let i = 0; i < columns.length; i++) {
-    const col = columns[i];
-    if (col === column) {
-      break;
-    }
-
-    const horizontalPadding =
-      i === 0 ? CELL_FIRST_PADDING + CELL_PADDING : 2 * CELL_PADDING;
-    left += parseInt(col.width, 10) + horizontalPadding;
-  }
-
-  return { left };
-};
+import { virtualRowsAreEqual, getStickyColumnStyle } from './DataTable.utils';
 
 export const DataTableHeader = props => {
   const {
